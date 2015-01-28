@@ -98,7 +98,7 @@ public class Drive {
 		
 	}
 	
-	private void stop() {
+	void stop() {
 		
 		lMot.stop();
 		rMot.stop();

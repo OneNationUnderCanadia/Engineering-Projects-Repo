@@ -4,20 +4,28 @@
  */
 package main;
 
+import lejos.nxt.Button;
+
 public class TestA {
 
 	public static void main(String[] args) throws InterruptedException {
 		
 		Drive driveBase = new Drive();
 		
-		driveBase.setForward(100, 0, 0);
+		driveBase.set((float)1.0, (float)0.0);
 		Thread.sleep(2000);
+		System.out.println("Step 1");
 		
-		driveBase.setBackward(50, 10, 20);
+		driveBase.set(0,0);
 		Thread.sleep(2000);
+		System.out.println("Wait");		
 		
-		driveBase.stop();
+		driveBase.set((float)-0.5, (float)0.25);
+		Thread.sleep(2000);
+		System.out.println("Step 2");
 		
+		driveBase.set(0,0);
+		Button.waitForAnyPress();
 	}
 
 }

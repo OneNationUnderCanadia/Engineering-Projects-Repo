@@ -38,8 +38,8 @@ public class Drive {
 		lMot.setPower(lSpeed);
 		rMot.setPower(rSpeed);
 		
-		lMot.forward();
-		rMot.backward();
+		lMot.backward();
+		rMot.forward();
 		
 	}
 	
@@ -51,8 +51,8 @@ public class Drive {
 		lMot.setPower(lSpeed);
 		rMot.setPower(rSpeed);
 		
-		lMot.backward();
-		rMot.forward();
+		lMot.forward();
+		rMot.backward();
 		
 	}
 	

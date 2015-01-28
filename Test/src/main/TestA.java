@@ -4,9 +4,6 @@
  */
 package main;
 
-import lejos.nxt.*;
-import lejos.nxt.addon.tetrix.*;
-
 public class TestA {
 
 	public static void main(String[] args) throws InterruptedException {

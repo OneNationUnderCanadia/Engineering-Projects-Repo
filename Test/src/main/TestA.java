@@ -1,6 +1,6 @@
-/** Created by iasmh2015
+/** Created by OneNationUnderCanadia
  *  On Jan 21, 2015 at 8:52:37 AM
- *  To 
+ *  To test the robot
  */
 package main;
 
@@ -11,24 +11,15 @@ public class TestA {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		TetrixControllerFactory cf = new TetrixControllerFactory(SensorPort.S1);
-		TetrixMotorController mc = cf.newMotorController();
+		Drive driveBase = new Drive();
 		
-		TetrixEncoderMotor rMot = mc.getEncoderMotor(TetrixMotorController.MOTOR_2);
-		TetrixEncoderMotor lMot = mc.getEncoderMotor(TetrixMotorController.MOTOR_1);
+		driveBase.setForward(100, 0, 0);
+		Thread.sleep(2000);
 		
-		rMot.setPower(100);
-		lMot.setPower(100);
+		driveBase.setBackward(50, 10, 20);
+		Thread.sleep(2000);
 		
-		rMot.forward();
-		lMot.forward();
-		Thread.sleep(1000);
-		
-		lMot.backward();
-		Thread.sleep(1000);
-		
-		rMot.stop();
-		lMot.stop();
+		driveBase.stop();
 		
 	}
 

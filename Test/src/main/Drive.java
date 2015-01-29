@@ -30,10 +30,37 @@ public class Drive {
 		
 	}
 	
-	public void setForward(int power, int lTurn, int rTurn) {
+	public void set(float power, float turn) {
 		
-		int lSpeed = power - lTurn;
-		int rSpeed = power - rTurn;
+		if (power == 0.0) {
+			stop();
+		}
+		else if (power > 0.0) {
+			setForward(Math.abs(power), (turn + 1) / 2);
+		}
+		else {
+			setBackward(Math.abs(power), (turn + 1) / 2);
+		}
+		
+	}
+	
+	private void setForward(float power, float turn) {
+		
+		float lTurn = turn + 1;
+		float rTurn = turn * -1 + 1;
+		
+		int lSpeed = (int) (power * lTurn * 50);
+		if (lSpeed > 100) {
+			lSpeed = 100;
+		} else if (lSpeed < 0) {
+			lSpeed = 0;
+		}
+		int rSpeed = (int) (power * rTurn * 50);
+		if (rSpeed > 100) {
+			rSpeed = 100;
+		} else if (rSpeed < 0) {
+			rSpeed = 0;
+		}
 		
 		lMot.setPower(lSpeed);
 		rMot.setPower(rSpeed);
@@ -43,10 +70,23 @@ public class Drive {
 		
 	}
 	
-	public void setBackward(int power, int lTurn, int rTurn) {
+	private void setBackward(float power, float turn) {
 		
-		int lSpeed = power - lTurn;
-		int rSpeed = power - rTurn;
+		float lTurn = turn + 1;
+		float rTurn = turn * -1 + 1;
+		
+		int lSpeed = (int) (power * lTurn * 50);
+		if (lSpeed > 100) {
+			lSpeed = 100;
+		} else if (lSpeed < 0) {
+			lSpeed = 0;
+		}
+		int rSpeed = (int) (power * rTurn * 50);
+		if (rSpeed > 100) {
+			rSpeed = 100;
+		} else if (rSpeed < 0) {
+			rSpeed = 0;
+		}
 		
 		lMot.setPower(lSpeed);
 		rMot.setPower(rSpeed);
@@ -56,7 +96,7 @@ public class Drive {
 		
 	}
 	
-	public void stop() {
+	private void stop() {
 		
 		lMot.stop();
 		rMot.stop();

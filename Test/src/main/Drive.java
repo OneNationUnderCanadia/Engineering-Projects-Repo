@@ -32,6 +32,8 @@ public class Drive {
 	
 	public void set(float power, float turn) {
 		
+		stop();
+		
 		if (power == 0.0) {
 			stop();
 		}
@@ -102,5 +104,5 @@ public class Drive {
 		rMot.stop();
 		
 	}
-
+	
 }

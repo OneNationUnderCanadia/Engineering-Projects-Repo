@@ -17,8 +17,8 @@ public class Drive {
 	
 	private TetrixControllerFactory cf;
 	private TetrixMotorController mc;
-	private TetrixEncoderMotor rMot;
-	private TetrixEncoderMotor lMot;
+	private static TetrixEncoderMotor rMot;
+	private static TetrixEncoderMotor lMot;
 	
 	public Drive() {
 		
@@ -30,7 +30,7 @@ public class Drive {
 		
 	}
 	
-	public void set(float power, float turn) {
+	public void setDrive(float power, float turn) {
 		
 		stop();
 		
@@ -46,7 +46,7 @@ public class Drive {
 		
 	}
 	
-	private void setForward(float power, float turn) {
+	private static void setForward(float power, float turn) {
 		
 		float lTurn = turn + 1;
 		float rTurn = turn * -1 + 1;
@@ -72,7 +72,7 @@ public class Drive {
 		
 	}
 	
-	private void setBackward(float power, float turn) {
+	private static void setBackward(float power, float turn) {
 		
 		float lTurn = turn + 1;
 		float rTurn = turn * -1 + 1;
@@ -98,10 +98,55 @@ public class Drive {
 		
 	}
 	
-	void stop() {
+	private static void stop() {
 		
 		lMot.stop();
 		rMot.stop();
+		
+	}
+	
+	public static void setWheels(int left, int right) {
+		
+		stop();
+		
+		setLeftWheel (left);
+		setRightWheel (right);
+		
+	}
+	
+	public static void setLeftWheel (int left) {
+		
+		lMot.stop();
+		
+		lMot.setPower(Math.abs(left));
+		
+		if (left == 0) {
+			lMot.stop();
+		}
+		else if (left > 0) {
+			lMot.forward();
+		}
+		else if (left < 0) {
+			lMot.backward();
+		}
+		
+	}
+	
+	public static void setRightWheel (int right) {
+		
+		rMot.stop();
+		
+		rMot.setPower(Math.abs(right));
+		
+		if (right == 0) {
+			rMot.stop();
+		}
+		else if (right > 0) {
+			rMot.forward();
+		}
+		else if (right < 0) {
+			rMot.backward();
+		}
 		
 	}
 	

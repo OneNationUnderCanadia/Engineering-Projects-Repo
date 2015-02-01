@@ -16,7 +16,7 @@ public class TestA {
 		TouchSensor sensor1;
 		sensor1 = new TouchSensor(SensorPort.S4);
 		
-		driveBase.set((float)1.0, (float)0.0);
+		driveBase.setDrive((float)1.0, (float)0.0);
 		Thread.sleep(2000);
 		System.out.println("Step 1");
 		
@@ -24,11 +24,11 @@ public class TestA {
 			sensor1.wait();
 		}
 		
-		driveBase.set((float)-1.0, (float)0.25);
+		driveBase.setDrive((float)-1.0, (float)0.0);
 		Thread.sleep(2000);
 		System.out.println("Step 2");
 		
-		driveBase.set(0,0);
+		driveBase.setDrive(0,0);
 		Button.waitForAnyPress();
 	}
 

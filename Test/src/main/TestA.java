@@ -15,14 +15,14 @@ public class TestA {
 		Drive driveBase = new Drive();
 		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
 		
-		driveBase.setDrive((float)1.0, (float)0.0);
+		driveBase.setWheels(100, 100);
 		System.out.println("Step 1");
 		
 		while (!sensor1.isPressed()) {
 			Thread.sleep(20);
 		}
 		
-		driveBase.setDrive((float)-1.0, (float)0.0);
+		driveBase.setWheels(-100, -100);
 		Thread.sleep(2000);
 		System.out.println("Step 2");
 		

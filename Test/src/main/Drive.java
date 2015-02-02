@@ -105,7 +105,7 @@ public class Drive {
 		
 	}
 	
-	public static void setWheels(int left, int right) {
+	public void setWheels(int left, int right) {
 		
 		stop();
 		
@@ -142,10 +142,10 @@ public class Drive {
 			rMot.stop();
 		}
 		else if (right > 0) {
-			rMot.forward();
+			rMot.backward();
 		}
 		else if (right < 0) {
-			rMot.backward();
+			rMot.forward();
 		}
 		
 	}

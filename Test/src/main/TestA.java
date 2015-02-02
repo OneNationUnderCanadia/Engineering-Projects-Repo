@@ -13,15 +13,13 @@ public class TestA {
 	public static void main(String[] args) throws InterruptedException {
 		
 		Drive driveBase = new Drive();
-		TouchSensor sensor1;
-		sensor1 = new TouchSensor(SensorPort.S4);
+		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
 		
 		driveBase.setDrive((float)1.0, (float)0.0);
-		Thread.sleep(2000);
 		System.out.println("Step 1");
 		
 		while (!sensor1.isPressed()) {
-			sensor1.wait();
+			Thread.sleep(20);
 		}
 		
 		driveBase.setDrive((float)-1.0, (float)0.0);

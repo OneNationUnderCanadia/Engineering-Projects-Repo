@@ -124,10 +124,10 @@ public class Drive {
 			lMot.stop();
 		}
 		else if (left > 0) {
-			lMot.forward();
+			lMot.backward();
 		}
 		else if (left < 0) {
-			lMot.backward();
+			lMot.forward();
 		}
 		
 	}
@@ -142,10 +142,10 @@ public class Drive {
 			rMot.stop();
 		}
 		else if (right > 0) {
-			rMot.backward();
+			rMot.forward();
 		}
 		else if (right < 0) {
-			rMot.forward();
+			rMot.backward();
 		}
 		
 	}

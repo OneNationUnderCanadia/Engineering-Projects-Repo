@@ -15,10 +15,12 @@ import lejos.nxt.addon.tetrix.TetrixMotorController;
  */
 public class Drive {
 	
+	
 	private TetrixControllerFactory cf;
 	private TetrixMotorController mc;
 	private static TetrixEncoderMotor rMot;
 	private static TetrixEncoderMotor lMot;
+	
 	
 	public Drive() {
 		
@@ -29,6 +31,7 @@ public class Drive {
 		lMot = mc.getEncoderMotor(TetrixMotorController.MOTOR_1);
 		
 	}
+	
 	
 	public void setDrive(float power, float turn) {
 		
@@ -45,6 +48,7 @@ public class Drive {
 		}
 		
 	}
+	
 	
 	private static void setForward(float power, float turn) {
 		
@@ -72,6 +76,7 @@ public class Drive {
 		
 	}
 	
+	
 	private static void setBackward(float power, float turn) {
 		
 		float lTurn = turn + 1;
@@ -98,12 +103,14 @@ public class Drive {
 		
 	}
 	
+	
 	private static void stop() {
 		
 		lMot.stop();
 		rMot.stop();
 		
 	}
+	
 	
 	public void setWheels(int left, int right) {
 		
@@ -113,6 +120,7 @@ public class Drive {
 		setRightWheel (right);
 		
 	}
+	
 	
 	public void setLeftWheel (int left) {
 		
@@ -131,6 +139,7 @@ public class Drive {
 		}
 		
 	}
+	
 	
 	public void setRightWheel (int right) {
 		

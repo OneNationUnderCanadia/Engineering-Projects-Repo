@@ -1,18 +1,15 @@
+package main;
 /** Created by OneNationUnderCanadia
  *  On Jan 28, 2015 at 9:18:01 AM
  *  To make the robot drive with better control
  */
-package main;
 
 import lejos.nxt.SensorPort;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.nxt.addon.tetrix.TetrixEncoderMotor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
 
-/**
- * @author iasmh2015
- *
- */
+
 public class Drive {
 	
 	

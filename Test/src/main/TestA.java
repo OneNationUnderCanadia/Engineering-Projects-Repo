@@ -14,11 +14,12 @@ public class TestA {
 		
 		Drive driveBase = new Drive();
 		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
+		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
 		
 		driveBase.setWheels(100, 100);
 		System.out.println("Step 1");
 		
-		while (!sensor1.isPressed()) {
+		while (!sensor1.isPressed() && !sensor2.isPressed()) {
 			Thread.sleep(20);
 		}
 		

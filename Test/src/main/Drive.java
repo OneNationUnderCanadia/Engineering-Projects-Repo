@@ -114,7 +114,7 @@ public class Drive {
 		
 	}
 	
-	public static void setLeftWheel (int left) {
+	public void setLeftWheel (int left) {
 		
 		lMot.stop();
 		
@@ -132,7 +132,7 @@ public class Drive {
 		
 	}
 	
-	public static void setRightWheel (int right) {
+	public void setRightWheel (int right) {
 		
 		rMot.stop();
 		

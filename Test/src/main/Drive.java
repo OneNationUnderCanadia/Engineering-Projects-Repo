@@ -4,7 +4,7 @@ package main;
  *  To make the robot drive with better control
  */
 
-import lejos.nxt.SensorPort;
+import lejos.nxt.I2CPort;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.nxt.addon.tetrix.TetrixEncoderMotor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
@@ -19,13 +19,13 @@ public class Drive {
 	private static TetrixEncoderMotor lMot;
 	
 	
-	public Drive() {
+	public Drive(I2CPort controlerPort, int left, int right) {
 		
-		cf = new TetrixControllerFactory(SensorPort.S1);
+		cf = new TetrixControllerFactory(controlerPort);
 		mc = cf.newMotorController();
 		
-		rMot = mc.getEncoderMotor(TetrixMotorController.MOTOR_2);
-		lMot = mc.getEncoderMotor(TetrixMotorController.MOTOR_1);
+		rMot = mc.getEncoderMotor(right);
+		lMot = mc.getEncoderMotor(left);
 		
 	}
 	

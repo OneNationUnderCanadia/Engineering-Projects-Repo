@@ -7,12 +7,13 @@ package main;
 import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
+import lejos.nxt.addon.tetrix.TetrixMotorController;
 
 public class TestA {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		Drive driveBase = new Drive();
+		Drive driveBase = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2);
 		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
 		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
 		

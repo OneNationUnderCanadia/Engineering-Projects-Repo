@@ -1,22 +1,27 @@
-import lejos.nxt.*t;
+import lejos.nxt.Button;
+import lejos.nxt.I2CSensor;
+import lejos.nxt.SensorPort;
+import lejos.nxt.addon.tetrix.TetrixControllerFactory;
+import lejos.nxt.addon.tetrix.TetrixEncoderMotor;
+import lejos.nxt.addon.tetrix.TetrixMotorController;
+
+
 
 
 public class MagnetTest {
 
 	/**
 	 * @param args
+	 * @throws InterruptedException 
 	 */
-	public SensorPort port = new SensorPort(4);
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws InterruptedException {
+		helpers hp = new helpers();
+		
+		hp.dataTest();
+		
+ 
 
-		for(int i = 0; i<100; i++) {
-		SensorPort(4).activate();
-		port.readRawValue();
-		}
-
-	}
-	private static SensorPort SensorPort(int i) {
-		lejos.nxt.SensorPort.S4.readRawValues(values)
 	}
 
 }

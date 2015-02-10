@@ -9,6 +9,7 @@ import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
+import lejos.util.Delay;
 
 public class TestA {
 
@@ -26,11 +27,11 @@ public class TestA {
 		}
 		
 		driveBase.setWheels(-100, -100);
-		Thread.sleep(2000);
+		Delay.msDelay(2000);
 		System.out.println("Step 2");
 		
 		driveBase.setWheels(-100, 100);
-		Thread.sleep(2000);
+		Delay.msDelay(2000);
 		
 		driveBase.setDrive(0,0);
 		Button.waitForAnyPress();

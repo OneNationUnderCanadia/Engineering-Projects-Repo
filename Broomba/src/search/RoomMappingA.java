@@ -1,5 +1,13 @@
 package search;
 
-public class RoomMappingA {
+import main.Drive;
 
+public class RoomMappingA {
+	
+	private Drive marvin;
+	
+	public RoomMappingA() {
+		
+	}
+	
 }

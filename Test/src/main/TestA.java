@@ -15,9 +15,9 @@ public class TestA {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		Drive driveBase = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2);
 		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
 		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
+		Drive driveBase = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2, sensor1, sensor2);
 		
 		driveBase.setWheels(100, 100);
 		System.out.println("Step 1");

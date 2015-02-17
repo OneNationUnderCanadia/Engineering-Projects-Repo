@@ -1,5 +1,9 @@
 package main;
 
+import lejos.nxt.SensorPort;
+import lejos.nxt.TouchSensor;
+import lejos.nxt.addon.tetrix.TetrixMotorController;
+
 /** This is the  class
  *  Created by iasmh2015
  *  To 
@@ -11,7 +15,12 @@ public class StartUp {
 
 	public static void main(String[] args) {
 		
-		// TODO write actual code
+		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
+		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
+		Drive marvin = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2, sensor1, sensor2);
+		
+		
+		
 		
 	}
 

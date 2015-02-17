@@ -6,6 +6,7 @@ package main;
  */
 
 import lejos.nxt.I2CPort;
+import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.nxt.addon.tetrix.TetrixEncoderMotor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
@@ -20,7 +21,7 @@ public class Drive {
 	private static TetrixEncoderMotor lMot;
 	
 	
-	public Drive(I2CPort controlerPort, int left, int right) {
+	public Drive(I2CPort controlerPort, int left, int right, TouchSensor touchA, TouchSensor touchB) {
 		
 		cf = new TetrixControllerFactory(controlerPort);
 		mc = cf.newMotorController();

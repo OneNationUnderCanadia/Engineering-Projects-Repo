@@ -10,6 +10,7 @@ import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.nxt.addon.tetrix.TetrixEncoderMotor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
+import lejos.util.Delay;
 
 
 public class Drive {
@@ -19,6 +20,8 @@ public class Drive {
 	private TetrixMotorController mc;
 	private static TetrixEncoderMotor rMot;
 	private static TetrixEncoderMotor lMot;
+	private TouchSensor touch1;
+	private TouchSensor touch2;
 	
 	
 	public Drive(I2CPort controlerPort, int left, int right, TouchSensor touchA, TouchSensor touchB) {
@@ -154,6 +157,14 @@ public class Drive {
 		}
 		else if (right < 0) {
 			rMot.backward();
+		}
+		
+	}
+	
+	public void waitForBumperPress() {
+		
+		while (!touch1.isPressed() && !touch2.isPressed()) {
+			Delay.msDelay(20);
 		}
 		
 	}

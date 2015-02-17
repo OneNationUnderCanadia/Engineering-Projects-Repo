@@ -20,8 +20,8 @@ public class Drive {
 	private TetrixMotorController mc;
 	private static TetrixEncoderMotor rMot;
 	private static TetrixEncoderMotor lMot;
-	private TouchSensor touch1;
-	private TouchSensor touch2;
+	public TouchSensor touch1;
+	public TouchSensor touch2;
 	
 	
 	public Drive(I2CPort controlerPort, int left, int right, TouchSensor touchA, TouchSensor touchB) {

@@ -1,5 +1,6 @@
 package main;
 
+import search.RoomMappingA;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
@@ -19,7 +20,9 @@ public class StartUp {
 		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
 		Drive marvin = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2, sensor1, sensor2);
 		
+		RoomMappingA mapper = new RoomMappingA(marvin);
 		
+		mapper.mapping(0);
 		
 	}
 

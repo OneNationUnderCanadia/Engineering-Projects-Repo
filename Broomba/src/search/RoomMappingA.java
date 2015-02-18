@@ -2,7 +2,6 @@ package search;
 
 import lejos.util.Delay;
 import main.Drive;
-import java.util.Timer;
 
 public class RoomMappingA {
 	

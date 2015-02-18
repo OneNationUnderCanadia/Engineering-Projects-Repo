@@ -15,7 +15,7 @@ public class RoomMappingA {
 	
 	public int mapping(int a) {
 		
-		marvin.setWheels(a, 50);
+		marvin.setWheels(a, 30);
 		
 		int i = 0;
 		while (!marvin.touch1.isPressed() && !marvin.touch2.isPressed() && i < (a+1)*30) {
@@ -23,8 +23,8 @@ public class RoomMappingA {
 			i++;
 		}
 		
-		if (a < 50) {
-			return mapping(a++);
+		if (a < 30) {
+			return mapping(a+1);
 		}
 		else {
 			return a;

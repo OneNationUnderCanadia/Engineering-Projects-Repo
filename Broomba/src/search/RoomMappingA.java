@@ -18,8 +18,9 @@ public class RoomMappingA {
 		marvin.setWheels(a, 50);
 		
 		int i = 0;
-		while (!marvin.touch1.isPressed() && !marvin.touch2.isPressed() && i < (a+1)*30) {
+		while (!marvin.touch1.isPressed() && !marvin.touch2.isPressed() && i < (a+1)*3) {
 			Delay.msDelay(40);
+			i++;
 		}
 		
 		if (a < 50) {

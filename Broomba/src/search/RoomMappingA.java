@@ -23,7 +23,7 @@ public class RoomMappingA {
 		}
 		
 		if (a < 50) {
-			return mapping(a++);
+			return mapping(a+=5);
 		}
 		else {
 			return a;

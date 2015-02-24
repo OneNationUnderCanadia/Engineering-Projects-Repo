@@ -8,7 +8,7 @@ public class RoomMappingA {
 	// The drive is global
 	private Drive marvin;
 	
-	// Init
+	// Initiating the class
 	public RoomMappingA(Drive drive) {
 		
 		marvin = drive;

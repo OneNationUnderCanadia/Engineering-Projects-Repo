@@ -5,13 +5,16 @@ import main.Drive;
 
 public class RoomMappingA {
 	
+	
 	private Drive marvin;
+	
 	
 	public RoomMappingA(Drive drive) {
 		
 		marvin = drive;
 		
 	}
+	
 	
 	public int mapping(int a) {
 		
@@ -30,6 +33,22 @@ public class RoomMappingA {
 			return a;
 		}
 		
+	}
+	
+	
+	public int bouncing(int a) {
+		
+		marvin.setWheels(30, 30);
+		marvin.waitForBumperPress();
+		marvin.setWheels(0, 30);
+		Delay.msDelay(1000);
+		
+		if (a < 1) {
+			return bouncing(a-=1);
+		}
+		else {
+			return 0;
+		}
 	}
 	
 }

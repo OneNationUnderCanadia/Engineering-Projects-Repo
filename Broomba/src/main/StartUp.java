@@ -22,7 +22,7 @@ public class StartUp {
 		
 		RoomMappingA mapper = new RoomMappingA(marvin);
 		
-		mapper.mapping(0);
+		mapper.bouncing(30);
 		
 	}
 

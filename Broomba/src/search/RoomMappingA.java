@@ -38,13 +38,19 @@ public class RoomMappingA {
 	
 	public int bouncing(int a) {
 		
+		// Drive forward until it hits something
 		marvin.setWheels(20, 20);
 		marvin.waitForBumperPress();
+		
+		// Back up
 		marvin.setWheels(-20, -20);
 		Delay.msDelay(200);
+		
+		// Turn
 		marvin.setWheels(0, 20);
 		Delay.msDelay(700);
 		
+		// Thing for recursion
 		if (a > 1) {
 			return bouncing(a-=1);
 		}

@@ -5,10 +5,10 @@ import main.Drive;
 
 public class RoomMappingA {
 	
-	
+	// The drive is global
 	private Drive marvin;
 	
-	
+	// Init
 	public RoomMappingA(Drive drive) {
 		
 		marvin = drive;
@@ -18,14 +18,18 @@ public class RoomMappingA {
 	
 	public int mapping(int a) {
 		
+		// Set the wheels so the left is whatever a is and the right is 30
 		marvin.setWheels(a, 30);
 		
+		// Start a counter i
+		// Keep going till either i reaches a certain value or the bumper is pressed
 		int i = 0;
 		while (!marvin.touch1.isPressed() && !marvin.touch2.isPressed() && i < (a+1)*30) {
 			Delay.msDelay(40);
 			i++;
 		}
 		
+		// Recursion so it runs 30 times
 		if (a < 30) {
 			return mapping(a+1);
 		}

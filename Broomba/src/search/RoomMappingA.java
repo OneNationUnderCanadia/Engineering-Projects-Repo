@@ -38,10 +38,12 @@ public class RoomMappingA {
 	
 	public int bouncing(int a) {
 		
-		marvin.setWheels(30, 30);
+		marvin.setWheels(20, 20);
 		marvin.waitForBumperPress();
-		marvin.setWheels(0, 30);
-		Delay.msDelay(1000);
+		marvin.setWheels(-20, -20);
+		Delay.msDelay(200);
+		marvin.setWheels(0, 20);
+		Delay.msDelay(500);
 		
 		if (a > 1) {
 			return bouncing(a-=1);

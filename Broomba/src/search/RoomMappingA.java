@@ -43,7 +43,7 @@ public class RoomMappingA {
 		marvin.setWheels(-20, -20);
 		Delay.msDelay(200);
 		marvin.setWheels(0, 20);
-		Delay.msDelay(500);
+		Delay.msDelay(700);
 		
 		if (a > 1) {
 			return bouncing(a-=1);

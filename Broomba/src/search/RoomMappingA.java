@@ -1,17 +1,20 @@
 package search;
 
 import lejos.util.Delay;
+import lejos.util.Timer;
 import main.Drive;
 
 public class RoomMappingA {
 	
 	// The drive is global
 	private Drive marvin;
+	private Timer timer;
 	
 	// Initiating the class
 	public RoomMappingA(Drive drive) {
 		
 		marvin = drive;
+		timer = new Timer(0, null);
 		
 	}
 	

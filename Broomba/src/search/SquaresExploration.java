@@ -12,11 +12,10 @@ public class SquaresExploration {
 	
 	private Drive marvin;
 	
-	int[][] maze; // The maze
+	int[][] maze; // The room- 1 means open, 2 means closed, 0 means unexplored
 	boolean[][] wasHere;
 	boolean[][] correctPath; // The solution to the maze
 	int startX, startY; // Starting X and Y values of maze
-	int endX, endY;     // Ending X and Y values of maze
 	int width;
 	int height;
 	
@@ -48,7 +47,7 @@ public class SquaresExploration {
 	}
 	
 	public boolean recursiveSolve(int x, int y) {
-	    if (x == endX && y == endY) return true; // If you reached the end
+		
 	    if (maze[x][y] == 2 || wasHere[x][y]) return false;  
 	    // If you are on a wall or already were here
 	    wasHere[x][y] = true;
@@ -73,6 +72,7 @@ public class SquaresExploration {
 	            return true;
 	        }
 	    return false;
+	    
 	}
 
 }

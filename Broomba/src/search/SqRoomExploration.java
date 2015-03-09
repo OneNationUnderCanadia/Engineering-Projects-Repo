@@ -12,8 +12,9 @@ import main.Drive;
 
 public class SqRoomExploration {
 	
+	// Global variables because I can
 	public Drive marvin;
-	public int[][] maze;
+	public int[][] room;
 	public boolean[][] wasHere;
 	public boolean[][][] accessable;
 	int startX, startY;
@@ -22,15 +23,19 @@ public class SqRoomExploration {
 	
 	public SqRoomExploration(Drive drive, int w, int h) {
 		
+		// The drivebase, so the robot can move
 		marvin = drive;
 		
+		// The width and height of the room
 		width = w;
 		height = h;
 		
-		maze = new int[w][h];
+		// The room arrays
+		room = new int[w][h];
 		wasHere = new boolean[w][h];
 		accessable = new boolean[w][h][4];
 		
+		// Sets the robot in the center of the room
 		startX = w/2;
 		startY = h/2;
 		
@@ -38,9 +43,9 @@ public class SqRoomExploration {
 	
 	public void exploreRoom() {
 		
-		for (int row = 0; row < maze.length; row++)  
+		for (int row = 0; row < room.length; row++)  
 	        // Sets boolean Arrays to default values
-	        for (int col = 0; col < maze[row].length; col++){
+	        for (int col = 0; col < room[row].length; col++){
 	            wasHere[row][col] = false;
 	            
 	        }

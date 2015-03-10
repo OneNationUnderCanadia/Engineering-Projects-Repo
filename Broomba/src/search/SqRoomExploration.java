@@ -2,8 +2,8 @@ package search;
 
 import main.Drive;
 
-/** This is the  class SqRoomExploration
- *  Created by 
+/** This is the class SqRoomExploration
+ *  Created by OneNationUnderCanadia
  *  To explore a room
  *  
  *  Created on Mar 9, 2015 at 8:20:16 AM
@@ -14,8 +14,10 @@ public class SqRoomExploration {
 	
 	// Global variables because I can
 	public Drive marvin;
+	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
 	public int[][] room;
 	public boolean[][] wasHere;
+	// Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
 	public boolean[][][] accessable;
 	int startX, startY;
 	int width;
@@ -43,20 +45,36 @@ public class SqRoomExploration {
 	
 	public void exploreRoom() {
 		
-		for (int row = 0; row < room.length; row++)  
+		for (int row = 0; row < room.length; row++){
 	        // Sets boolean Arrays to default values
 	        for (int col = 0; col < room[row].length; col++){
 	            wasHere[row][col] = false;
 	            
 	        }
-	    boolean b = recursiveExplore(startX, startY);
-	    // Will leave you with a boolean array (correctPath) 
-	    // with the path indicated by true values.
-	    // If b is false, there is no solution to the maze
+	        
+		}
+		
+	    recursiveExplore(startX, startY);
 		
 	}
 	
-	public boolean recursiveExplore(int x, int y) {
+	private boolean recursiveExplore(int x, int y) {
+		
+		if(room[x][y] == 0) room[x][y] = 1;
+		
+		if(wasHere[x][y]) return false;
+		
+		wasHere[x][y] = true;
+		
+		// TODO clean square
+		
+		if(x != 0) {
+			
+			// TODO go left
+			// TODO if(!hit bumper) do next square;
+			// TODO else accessable[x-1][y][0] = false;
+			
+		}
 		
 		return false;
 		

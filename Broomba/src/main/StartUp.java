@@ -16,9 +16,12 @@ public class StartUp {
 
 	public static void main(String[] args) {
 		
+		// TODO headlights
+		
 		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
 		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
 		Drive marvin = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2, sensor1, sensor2);
+		// Pilot pilot = new Pilot((float) 11, (float) 10, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2);
 		
 		RoomMappingA mapper = new RoomMappingA(marvin);
 		

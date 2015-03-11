@@ -1,6 +1,6 @@
 package search;
 
-import main.Drive;
+import lejos.robotics.navigation.DifferentialPilot;
 
 /** This is the class SqRoomExploration
  *  Created by OneNationUnderCanadia
@@ -13,7 +13,7 @@ import main.Drive;
 public class SqRoomExploration {
 	
 	// Global variables because I can
-	public Drive marvin;
+	public DifferentialPilot marvin;
 	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
 	public int[][] room;
 	public boolean[][] wasHere;
@@ -23,10 +23,10 @@ public class SqRoomExploration {
 	int width;
 	int height;
 	
-	public SqRoomExploration(Drive drive, int w, int h) {
+	public SqRoomExploration(DifferentialPilot pilot, int w, int h) {
 		
 		// The drivebase, so the robot can move
-		marvin = drive;
+		marvin = pilot;
 		
 		// The width and height of the room
 		width = w;

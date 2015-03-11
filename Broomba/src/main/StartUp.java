@@ -1,31 +1,36 @@
 package main;
 
-import search.RoomMappingA;
+import search.SqRoomExploration;
 import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
+import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
+import lejos.nxt.addon.tetrix.TetrixControllerFactory;
+import lejos.robotics.navigation.DifferentialPilot;
 
-/** This is the  class
- *  Created by iasmh2015
- *  To 
+/** This is the  class StartUp
+ *  Created by OneNationUnderCanadia
+ *  To start the robot
  *  
  *  Created on Feb 16, 2015 at 8:48:15 AM
  */
 
 public class StartUp {
+	
+	private static TetrixControllerFactory cf;
+	private static TetrixMotorController mc;
 
 	public static void main(String[] args) {
 		
 		// TODO headlights
 		
-		TouchSensor sensor1 = new TouchSensor(SensorPort.S4);
-		TouchSensor sensor2 = new TouchSensor(SensorPort.S3);
-		Drive marvin = new Drive(SensorPort.S1, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2, sensor1, sensor2);
-		// Pilot pilot = new Pilot((float) 11, (float) 10, TetrixMotorController.MOTOR_1, TetrixMotorController.MOTOR_2);
+		cf = new TetrixControllerFactory(SensorPort.S1);
+		mc = cf.newMotorController();
 		
-		RoomMappingA mapper = new RoomMappingA(marvin);
+		TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
+		TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);
+		DifferentialPilot pilot = new DifferentialPilot((double) 10, (double) 10, motor1, motor2);
 		
-		mapper.bouncing(30);
+		SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
 		
 	}
 

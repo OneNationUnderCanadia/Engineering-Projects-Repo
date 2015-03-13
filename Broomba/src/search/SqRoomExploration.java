@@ -75,6 +75,13 @@ public class SqRoomExploration {
 			// TODO else accessable[x-1][y][0] = false;
 			
 		}
+		if(x != width - 1) {
+			
+			/// TODO go right
+			// TODO if(!hit bumper) do next square;
+			// TODO else accessable[x+1][y][1] = false;
+			
+		}
 		
 		return false;
 		

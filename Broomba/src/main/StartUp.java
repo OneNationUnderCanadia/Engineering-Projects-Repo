@@ -28,7 +28,7 @@ public class StartUp {
 		
 		TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
 		TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);
-		DifferentialPilot pilot = new DifferentialPilot((double) 10, (double) 10, motor1, motor2);
+		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motor1, motor2);
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
 		

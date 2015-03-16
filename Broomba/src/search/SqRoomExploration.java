@@ -1,5 +1,6 @@
 package search;
 
+import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 
 /** This is the class SqRoomExploration
@@ -14,6 +15,7 @@ public class SqRoomExploration {
 	
 	// Global variables because I can
 	public DifferentialPilot marvin;
+	public RoomMappingA mapper;
 	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
 	public int[][] room;
 	public boolean[][] wasHere;
@@ -40,6 +42,8 @@ public class SqRoomExploration {
 		// Sets the robot in the center of the room
 		startX = w/2;
 		startY = h/2;
+		
+		mapper = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
 	}
 	

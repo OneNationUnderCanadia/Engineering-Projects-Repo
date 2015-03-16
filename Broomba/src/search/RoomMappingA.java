@@ -2,6 +2,7 @@ package search;
 
 import lejos.util.Delay;
 import lejos.util.Stopwatch;
+import lejos.nxt.ADSensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -14,11 +15,11 @@ public class RoomMappingA {
 	private Stopwatch time;
 	
 	// Initiating the class
-	public RoomMappingA(DifferentialPilot drive, TouchSensor a, TouchSensor b) {
+	public RoomMappingA(DifferentialPilot drive, ADSensorPort a, ADSensorPort b) {
 		
 		marvin = drive;
-		touch1 = a;
-		touch2 = b;
+		touch1 = new TouchSensor(a);
+		touch2 = new TouchSensor(b);
 		time = new Stopwatch();
 		
 	}

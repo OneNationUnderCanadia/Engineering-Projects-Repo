@@ -1,6 +1,7 @@
 package search;
 
 import lejos.util.Delay;
+import lejos.util.Stopwatch;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -10,6 +11,7 @@ public class RoomMappingA {
 	private DifferentialPilot marvin;
 	private TouchSensor touch1;
 	private TouchSensor touch2;
+	private Stopwatch time;
 	
 	// Initiating the class
 	public RoomMappingA(DifferentialPilot drive, TouchSensor a, TouchSensor b) {
@@ -17,6 +19,7 @@ public class RoomMappingA {
 		marvin = drive;
 		touch1 = a;
 		touch2 = b;
+		time = new Stopwatch();
 		
 	}
 	
@@ -75,6 +78,19 @@ public class RoomMappingA {
 		while (!touch1.isPressed() && !touch2.isPressed()) {
 			
 			Delay.msDelay(20);
+			
+		}
+		
+	}
+	
+	public void waitForBumperPress(int timeOut) {
+		
+		time.reset();
+		int elapsed = 0;
+		
+		while (!touch1.isPressed() && !touch2.isPressed() && elapsed < timeOut) {
+			
+			elapsed = time.elapsed();
 			
 		}
 		

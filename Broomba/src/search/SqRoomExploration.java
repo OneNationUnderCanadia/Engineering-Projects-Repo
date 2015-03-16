@@ -19,9 +19,9 @@ public class SqRoomExploration {
 	public boolean[][] wasHere;
 	// Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
 	public boolean[][][] accessable;
-	int startX, startY;
-	int width;
-	int height;
+	public int startX, startY;
+	public int width;
+	public int height;
 	
 	public SqRoomExploration(DifferentialPilot pilot, int w, int h) {
 		
@@ -70,6 +70,8 @@ public class SqRoomExploration {
 		
 		if(x != 0) {
 			
+			marvin.setTravelSpeed(10);
+			marvin.forward();
 			// TODO go left
 			// TODO if(!hit bumper) do next square;
 			// TODO else accessable[x-1][y][0] = false;

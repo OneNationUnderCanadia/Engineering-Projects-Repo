@@ -1,20 +1,22 @@
 package search;
 
 import lejos.util.Delay;
-import lejos.util.Timer;
-import main.Drive;
+import lejos.nxt.TouchSensor;
+import lejos.robotics.navigation.DifferentialPilot;
 
 public class RoomMappingA {
 	
 	// The drive is global
-	private Drive marvin;
-	private Timer timer;
+	private DifferentialPilot marvin;
+	private TouchSensor touch1;
+	private TouchSensor touch2;
 	
 	// Initiating the class
-	public RoomMappingA(Drive drive) {
+	public RoomMappingA(DifferentialPilot drive, TouchSensor a, TouchSensor b) {
 		
 		marvin = drive;
-		timer = new Timer(0, null);
+		touch1 = a;
+		touch2 = b;
 		
 	}
 	
@@ -22,12 +24,12 @@ public class RoomMappingA {
 	public int mapping(int a) {
 		
 		// Set the wheels so the left is whatever a is and the right is 30
-		marvin.setWheels(a, 30);
+		marvin.steer(100);
 		
 		// Start a counter i
 		// Keep going till either i reaches a certain value or the bumper is pressed
 		int i = 0;
-		while (!marvin.touch1.isPressed() && !marvin.touch2.isPressed() && i < (a+1)*30) {
+		while (!touch1.isPressed() && !touch2.isPressed() && i < (a+1)*30) {
 			Delay.msDelay(40);
 			i++;
 		}
@@ -46,15 +48,16 @@ public class RoomMappingA {
 	public int bouncing(int a) {
 		
 		// Drive forward until it hits something
-		marvin.setWheels(20, 20);
-		marvin.waitForBumperPress();
+		marvin.setTravelSpeed(10);
+		marvin.steer(0);
+		waitForBumperPress();
 		
 		// Back up
-		marvin.setWheels(-20, -20);
+		marvin.backward();
 		Delay.msDelay(200);
 		
 		// Turn
-		marvin.setWheels(0, 20);
+		marvin.rotateLeft();
 		Delay.msDelay(700);
 		
 		// Thing for recursion
@@ -63,6 +66,16 @@ public class RoomMappingA {
 		}
 		else {
 			return 0;
+		}
+		
+	}
+	
+	public void waitForBumperPress() {
+		
+		while (!touch1.isPressed() && !touch2.isPressed()) {
+			
+			Delay.msDelay(20);
+			
 		}
 		
 	}

@@ -2,64 +2,66 @@ package search;
 
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
-import lejos.nxt.addon.tetrix.TetrixMotorController;
-import lejos.util.Delay;
-import lejos.util.Timer;
-import lejos.util.TimerListener;
-import main.Drive;
+import lejos.robotics.navigation.DifferentialPilot;
+import lejos.util.Stopwatch;
 
 public class SquareMapping {
 
 	// The drive is global
-	private Drive marvin;
-	private int map[] = new int[2]; // 0 = x-coord biggest, 1 = y-coord biggest
+	private DifferentialPilot marvin;
+	private RoomMappingA rma;
+	TouchSensor ta;
+	TouchSensor tb;
+	
 	
 	// Init
-	public SquareMapping(Drive drive) {
-		
-		marvin = drive;
+	public SquareMapping(DifferentialPilot dp, TouchSensor ts1, TouchSensor ts2) {
+		marvin = dp;
+		ta = ts1;
+		tb = ts2;
+		rma = new RoomMappingA(marvin, ta, tb);
+
+	
 		
 	}
 	
 	public void goNinty(){
-		TimerListener el = null;
+		marvin.rotate(90);
+		/*TimerListener el = null;
 		Timer ts = new Timer(0, el);
 		ts.start();
 		marvin.setWheels(-10, 10);
 		while(ts.getDelay() < 525){}
 		marvin.setWheels(0, 0);
+		*/
 	}
 	
 	public void sweepinSquares(){
-			findCenter(findPerimeter());
-			
+		int[] map = findPerimeter();
+			findCenter(map);
+			spinCircles(map);
 		}
 	
 
 	public int[] findPerimeter(){ //Finds Perimeter then resets to origin; map = [0]xmax, [1]ymax
-		Timer checker = new Timer(0, null);
-		Timer time = new Timer(0, null);
-
-		
+		Stopwatch sw = new Stopwatch();
+		int map[] = new int[2];
 		
 			// Check if corner
 			for(int i = 0; i<2; i++){ //find up and left
-				checker.setDelay(0);
-				marvin.setWheels(10, 10);
-				checker.start();
-				marvin.waitForBumperPress();
-				checker.stop();
-				map[i] = checker.getDelay();
+				sw.reset();
+				marvin.forward();
+				rma.waitForBumperPress(); 
+				map[i] = sw.elapsed();
+				goNinty(); 
 			}
-			for(int i = 0; i<2; i++){
-				while(map[i] > time.getDelay()){
-					goNinty(); 
-				}
-			}
+			marvin.travel(map[0]);
+			goNinty();
+			marvin.travel(map[1]);
 			return map;
 		}
 	
-	public int[] findCenter(int[] map){ //returns center[]; center[0] = x coord, center[1] = y coord
+	public int[] findCenter(int[]  map){ //returns center[]; center[0] = x coord, center[1] = y coord
 		int[] center = new int[1];
 		
 		center[0] = map[0]/2;
@@ -68,8 +70,7 @@ public class SquareMapping {
 		return center;
 	}
 	
-	public void spinCircles(){
-		RoomMappingA rma = new RoomMappingA(marvin);
+	public void spinCircles(int[] map){
 		int area = map[0] * map[1]; 
 		rma.mapping(0, area);
 	}

@@ -97,4 +97,12 @@ public class RoomMappingA {
 		
 	}
 	
+	public boolean isBumperPressed() {
+		
+		if(touch1.isPressed() || touch2.isPressed()) return true;
+		
+		else return false;
+		
+	}
+	
 }

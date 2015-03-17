@@ -2,6 +2,7 @@ package search;
 
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.util.Delay;
 
 /** This is the class SqRoomExploration
  *  Created by OneNationUnderCanadia
@@ -12,6 +13,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 
 public class SqRoomExploration {
+	
 	
 	// Global variables because I can
 	public DifferentialPilot marvin;
@@ -24,6 +26,7 @@ public class SqRoomExploration {
 	public int startX, startY;
 	public int width;
 	public int height;
+	
 	
 	public SqRoomExploration(DifferentialPilot pilot, int w, int h) {
 		
@@ -47,6 +50,7 @@ public class SqRoomExploration {
 		
 	}
 	
+	
 	public void exploreRoom() {
 		
 		for (int row = 0; row < room.length; row++){
@@ -62,6 +66,7 @@ public class SqRoomExploration {
 		
 	}
 	
+	
 	private boolean recursiveExplore(int x, int y) {
 		
 		if(room[x][y] == 0) room[x][y] = 1;
@@ -74,22 +79,62 @@ public class SqRoomExploration {
 		
 		if(x != 0) {
 			
+			//TODO go left
 			marvin.setTravelSpeed(10);
-			marvin.forward();
-			// TODO go left
-			// TODO if(!hit bumper) do next square;
-			// TODO else accessable[x-1][y][0] = false;
+			goForward(2000);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				recursiveExplore(x-1, y);
+				
+			}
+			else {
+				
+				accessable[x-1][y][0] = false;
+				backUp();
+				
+			}
 			
 		}
 		if(x != width - 1) {
 			
 			/// TODO go right
-			// TODO if(!hit bumper) do next square;
-			// TODO else accessable[x+1][y][1] = false;
+			marvin.setTravelSpeed(10);
+			goForward(2000);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				recursiveExplore(x+1, y);
+				
+			}
+			else {
+				
+				accessable[x+1][y][0] = false;
+				backUp();
+				
+			}
 			
 		}
 		
 		return false;
+		
+	}
+	
+	
+	private void goForward(int bumperTime) {
+		
+		marvin.forward();
+		mapper.waitForBumperPress(bumperTime);
+		marvin.stop();
+		
+	}
+	
+	
+	private void backUp() {
+		
+		marvin.backward();
+		Delay.msDelay(1000);
+		marvin.stop();
 		
 	}
 

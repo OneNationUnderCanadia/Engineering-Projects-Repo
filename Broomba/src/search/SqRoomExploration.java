@@ -56,6 +56,7 @@ public class SqRoomExploration {
 		for (int row = 0; row < room.length; row++){
 	        // Sets boolean Arrays to default values
 	        for (int col = 0; col < room[row].length; col++){
+	        	
 	            wasHere[row][col] = false;
 	            
 	        }
@@ -77,6 +78,7 @@ public class SqRoomExploration {
 		
 		// TODO clean square
 		
+		// Try going left
 		if(x != 0) {
 			
 			//TODO go left
@@ -96,6 +98,8 @@ public class SqRoomExploration {
 			}
 			
 		}
+		
+		// Try going right
 		if(x != width - 1) {
 			
 			/// TODO go right
@@ -109,7 +113,49 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				accessable[x+1][y][0] = false;
+				accessable[x+1][y][1] = false;
+				backUp();
+				
+			}
+			
+		}
+		
+		// Try going down
+		if(y != 0) {
+			
+			//TODO go down
+			marvin.setTravelSpeed(10);
+			goForward(2000);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				recursiveExplore(x, y-1);
+				
+			}
+			else {
+				
+				accessable[x][y-1][2] = false;
+				backUp();
+				
+			}
+			
+		}
+		
+		// Try going up
+		if(y != height - 1) {
+			
+			/// TODO go right
+			marvin.setTravelSpeed(10);
+			goForward(2000);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				recursiveExplore(x, y+1);
+				
+			}
+			else {
+				
+				accessable[x][y+1][1] = false;
 				backUp();
 				
 			}

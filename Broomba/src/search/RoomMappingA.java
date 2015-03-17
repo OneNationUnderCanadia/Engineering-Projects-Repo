@@ -25,7 +25,7 @@ public class RoomMappingA {
 	}
 	
 	
-	public int mapping(int a) {
+	public int mapping(int a, int area) {
 		
 		// Set the wheels so the left is whatever a is and the right is 30
 		marvin.steer(100);
@@ -39,8 +39,8 @@ public class RoomMappingA {
 		}
 		
 		// Recursion so it runs 30 times
-		if (a < 30) {
-			return mapping(a+1);
+		if (a < area) {
+			return mapping(a+1, area);
 		}
 		else {
 			return a;

@@ -10,7 +10,7 @@ import main.Drive;
 
 public class SquaresExploration {
 	
-	private Drive marvin;
+	// private Drive marvin;
 	
 	int[][] maze; // The room- 1 means open, 2 means closed, 0 means unexplored
 	boolean[][] wasHere;
@@ -21,7 +21,7 @@ public class SquaresExploration {
 	
 	public SquaresExploration(Drive drive, int w, int h) {
 		
-		marvin = drive;
+		// marvin = drive;
 		
 		maze = new int[w][h];
 		wasHere = new boolean[w][h];
@@ -40,7 +40,7 @@ public class SquaresExploration {
 	            wasHere[row][col] = false;
 	            correctPath[row][col] = false;
 	        }
-	    boolean b = recursiveSolve(startX, startY);
+	    recursiveSolve(startX, startY);
 	    // Will leave you with a boolean array (correctPath) 
 	    // with the path indicated by true values.
 	    // If b is false, there is no solution to the maze

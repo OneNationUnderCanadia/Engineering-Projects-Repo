@@ -1,5 +1,12 @@
 package search;
 
+/** This is the class RoomMappingA
+ *  Created by OneNationUnderCanadia
+ *  To have the methods to explore a room
+ *  
+ *  Created on Feb 20, 2015 at 8:40:26 AM
+ */
+
 import lejos.util.Delay;
 import lejos.util.Stopwatch;
 import lejos.nxt.ADSensorPort;

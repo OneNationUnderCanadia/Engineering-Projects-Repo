@@ -99,6 +99,7 @@ public class RoomMappingA {
 		while (!touch1.isPressed() && !touch2.isPressed() && elapsed < timeOut) {
 			
 			elapsed = time.elapsed();
+			Delay.msDelay(5);
 			
 		}
 		

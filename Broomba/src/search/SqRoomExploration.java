@@ -144,7 +144,7 @@ public class SqRoomExploration {
 		// Try going up
 		if(y != height - 1) {
 			
-			/// TODO go right
+			/// TODO go up
 			marvin.setTravelSpeed(10);
 			goForward(2000);
 			

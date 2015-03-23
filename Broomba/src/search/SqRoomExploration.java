@@ -76,12 +76,13 @@ public class SqRoomExploration {
 		
 		wasHere[x][y] = true;
 		
-		// TODO clean square
+		// TODO clean square, use Joey's code once it's done
 		
 		// Try going left
 		if(x != 0) {
 			
 			//TODO go left
+			
 			marvin.setTravelSpeed(10);
 			goForward(2000);
 			
@@ -103,6 +104,7 @@ public class SqRoomExploration {
 		if(x != width - 1) {
 			
 			/// TODO go right
+			
 			marvin.setTravelSpeed(10);
 			goForward(2000);
 			
@@ -124,6 +126,7 @@ public class SqRoomExploration {
 		if(y != 0) {
 			
 			//TODO go down
+			
 			marvin.setTravelSpeed(10);
 			goForward(2000);
 			
@@ -145,6 +148,7 @@ public class SqRoomExploration {
 		if(y != height - 1) {
 			
 			/// TODO go up
+			
 			marvin.setTravelSpeed(10);
 			goForward(2000);
 			

@@ -1,9 +1,11 @@
 package main;
 
 import search.SqRoomExploration;
+import lejos.nxt.MotorPort;
+import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.addon.tetrix.TetrixMotorController;
-import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
+// import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -26,9 +28,13 @@ public class StartUp {
 		cf = new TetrixControllerFactory(SensorPort.S1);
 		mc = cf.newMotorController();
 		
-		TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
-		TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);
-		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motor1, motor2);
+		// TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
+		// TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);
+		
+		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
+		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
+		
+		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motorB, motorC);
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
 		

@@ -3,10 +3,10 @@ package main;
 import search.SqRoomExploration;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
-import lejos.nxt.SensorPort;
-import lejos.nxt.addon.tetrix.TetrixMotorController;
+// import lejos.nxt.SensorPort;
+// import lejos.nxt.addon.tetrix.TetrixMotorController;
 // import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
-import lejos.nxt.addon.tetrix.TetrixControllerFactory;
+// import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.robotics.navigation.DifferentialPilot;
 
 /** This is the  class StartUp
@@ -18,15 +18,19 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class StartUp {
 	
-	private static TetrixControllerFactory cf;
-	private static TetrixMotorController mc;
+	// private static TetrixControllerFactory cf;
+	// private static TetrixMotorController mc;
 
 	public static void main(String[] args) {
 		
-		// TODO headlights
+		/** TODO headlights
+		 *  Brian do the thing
+		 *  Joey do the thing
+		 *  Jeff don't do the thing you'd screw it up learn to Java
+		 */
 		
-		cf = new TetrixControllerFactory(SensorPort.S1);
-		mc = cf.newMotorController();
+		// cf = new TetrixControllerFactory(SensorPort.S1);
+		// mc = cf.newMotorController();
 		
 		// TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
 		// TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);

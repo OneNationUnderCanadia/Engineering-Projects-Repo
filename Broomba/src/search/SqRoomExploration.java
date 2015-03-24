@@ -159,7 +159,7 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				accessable[x][y+1][1] = false;
+				accessable[x][y+1][3] = false;
 				backUp();
 				
 			}

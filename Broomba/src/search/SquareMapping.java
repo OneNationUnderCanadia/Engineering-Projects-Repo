@@ -1,5 +1,6 @@
 package search;
 
+import lejos.nxt.ADSensorPort;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
@@ -10,16 +11,12 @@ public class SquareMapping {
 	// The drive is global
 	private DifferentialPilot marvin;
 	private RoomMappingA rma;
-	TouchSensor ta;
-	TouchSensor tb;
 	
 	
 	// Init
-	public SquareMapping(DifferentialPilot dp, TouchSensor ts1, TouchSensor ts2) {
+	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2) {
 		marvin = dp;
-		ta = ts1;
-		tb = ts2;
-		rma = new RoomMappingA(marvin, ta, tb);
+		rma = new RoomMappingA(marvin, ts1,ts2);
 
 	
 		

@@ -76,7 +76,7 @@ public class SqRoomExploration {
 		
 		wasHere[x][y] = true;
 		
-		/** TODO clean square, use Joey's code once it's done */
+		/** TODO clean square, use Joey's code (once it's done) */
 		
 		// Try going left
 		if(x != 0) {

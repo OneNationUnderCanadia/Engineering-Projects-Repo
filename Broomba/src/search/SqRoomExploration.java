@@ -83,8 +83,7 @@ public class SqRoomExploration {
 			
 			/** TODO go left */
 			
-			marvin.setTravelSpeed(10);
-			goForward(2000);
+			marvin.travel(100);
 			
 			if(!mapper.isBumperPressed()) {
 				
@@ -105,8 +104,7 @@ public class SqRoomExploration {
 			
 			/** TODO go right */
 			
-			marvin.setTravelSpeed(10);
-			goForward(2000);
+			marvin.travel(100);
 			
 			if(!mapper.isBumperPressed()) {
 				
@@ -127,8 +125,7 @@ public class SqRoomExploration {
 			
 			/** TODO go down */
 			
-			marvin.setTravelSpeed(10);
-			goForward(2000);
+			marvin.travel(100);
 			
 			if(!mapper.isBumperPressed()) {
 				
@@ -149,8 +146,7 @@ public class SqRoomExploration {
 			
 			/** TODO go up */
 			
-			marvin.setTravelSpeed(10);
-			goForward(2000);
+			marvin.travel(100);
 			
 			if(!mapper.isBumperPressed()) {
 				

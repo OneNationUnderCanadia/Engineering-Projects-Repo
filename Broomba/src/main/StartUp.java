@@ -40,7 +40,7 @@ public class StartUp {
 		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		
-		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motorB, motorC);
+		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motorB, motorC, true);
 		
 		//SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
 		

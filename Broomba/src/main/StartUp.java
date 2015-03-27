@@ -1,8 +1,10 @@
 package main;
 
 import search.SqRoomExploration;
+import search.SquareMapping;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
+import lejos.nxt.SensorPort;
 // import lejos.nxt.SensorPort;
 // import lejos.nxt.addon.tetrix.TetrixMotorController;
 // import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
@@ -40,9 +42,11 @@ public class StartUp {
 		
 		DifferentialPilot pilot = new DifferentialPilot(7.5, 31.9, motorB, motorC);
 		
-		SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
+		//SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
 		
-		mapper.exploreRoom();
+		//mapper.exploreRoom();
+		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
+		spinner.sweepinSquares();
 		
 	}
 

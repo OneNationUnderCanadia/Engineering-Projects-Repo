@@ -4,7 +4,6 @@ import lejos.nxt.ADSensorPort;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.util.Stopwatch;
 
 public class SquareMapping {
 
@@ -34,23 +33,22 @@ public class SquareMapping {
 	}
 	
 	public void sweepinSquares(){
-		int[] map = findPerimeter();
+		float[] map = findPerimeter();
 			findCenter(map);
 			spinCircles(map);
 		}
 	
 
-	public int[] findPerimeter(){ //Finds Perimeter then resets to origin; map = [0]xmax, [1]ymax
-		Stopwatch sw = new Stopwatch();
-		int map[] = new int[2];
+	public float[] findPerimeter(){ //Finds Perimeter then resets to origin; map = [0]xmax, [1]ymax
+		float map[] = new float[2];
 		
 			// Check if corner
 			for(int i = 0; i<2; i++){ //find up and left
-				sw.reset();
 				marvin.forward();
 				rma.waitForBumperPress(); 
-				map[i] = sw.elapsed();
+				map[i] = marvin.getMovementIncrement();
 				goNinty(); 
+				marvin.stop();
 			}
 			marvin.travel(map[0]);
 			goNinty();
@@ -58,8 +56,8 @@ public class SquareMapping {
 			return map;
 		}
 	
-	public int[] findCenter(int[]  map){ //returns center[]; center[0] = x coord, center[1] = y coord
-		int[] center = new int[1];
+	public float[] findCenter(float[]  map){ //returns center[]; center[0] = x coord, center[1] = y coord
+		float[] center = new float[1];
 		
 		center[0] = map[0]/2;
 		center[1] = map[1]/2;
@@ -67,8 +65,8 @@ public class SquareMapping {
 		return center;
 	}
 	
-	public void spinCircles(int[] map){
-		int area = map[0] * map[1]; 
+	public void spinCircles(float[] map){
+		int area = (int) (map[0] * map[1]); 
 		rma.mapping(0, area);
 	}
 }

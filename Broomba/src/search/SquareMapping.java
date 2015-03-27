@@ -34,8 +34,7 @@ public class SquareMapping {
 	
 	public void sweepinSquares(){
 		float[] map = findPerimeter();
-			findCenter(map);
-			spinCircles(map);
+			spinSquares(findCenter(map), map);
 		}
 	
 
@@ -65,7 +64,7 @@ public class SquareMapping {
 		return center;
 	}
 	
-	public void spinCircles(float[] map){
+	public void spinSquares(float[] center, float[] map){
 		int area = (int) (map[0] * map[1]); 
 		rma.mapping(0, area);
 	}

@@ -46,7 +46,7 @@ public class StartUp {
 		
 		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
-		spinner.sweepinSquares();
+		spinner.spinSquares(50, 50);
 		
 	}
 

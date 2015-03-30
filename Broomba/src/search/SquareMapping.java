@@ -65,7 +65,15 @@ public class SquareMapping {
 	}
 	
 	public void spinSquares(float[] center, float[] map){
-		int area = (int) (map[0] * map[1]); 
-		rma.mapping(0, area);
+		//int area = (int) (map[0] * map[1]); 
+		//rma.mapping(0, area);
+		int leftOrRight=-1;
+		for(int i = 0; i < map[1]; i+=20){
+		    i*=-1;
+			marvin.travel(map[0]); 
+			marvin.rotate(90*leftOrRight);
+			marvin.travel(20);
+			marvin.rotate(90);
+		}
 	}
 }

@@ -69,7 +69,7 @@ public class SquareMapping {
 		//rma.mapping(0, area);
 		int leftOrRight=-1;
 		for(int i = 0; i < map[1]; i+=20){
-		    i*=-1;
+		    leftOrRight*=-1;
 			marvin.travel(map[0]); 
 			marvin.rotate(90*leftOrRight);
 			marvin.travel(20);

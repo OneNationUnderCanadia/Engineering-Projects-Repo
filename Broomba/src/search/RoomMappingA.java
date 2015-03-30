@@ -15,11 +15,13 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class RoomMappingA {
 	
+	
 	// The drive is global
 	private DifferentialPilot marvin;
 	private TouchSensor touch1;
 	private TouchSensor touch2;
 	private Stopwatch time;
+	
 	
 	// Initiating the class
 	public RoomMappingA(DifferentialPilot drive, ADSensorPort a, ADSensorPort b) {
@@ -91,6 +93,7 @@ public class RoomMappingA {
 		
 	}
 	
+	
 	public void waitForBumperPress(int timeOut) {
 		
 		time.reset();
@@ -105,6 +108,7 @@ public class RoomMappingA {
 		
 	}
 	
+	
 	public boolean isBumperPressed() {
 		
 		if(touch1.isPressed() || touch2.isPressed()) return true;
@@ -112,5 +116,6 @@ public class RoomMappingA {
 		else return false;
 		
 	}
+	
 	
 }

@@ -42,11 +42,11 @@ public class StartUp {
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.5, motorB, motorC, true);
 		
-		//SqRoomExploration mapper = new SqRoomExploration(pilot, 60, 60);
-		
 		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
 		spinner.spinSquares(50, 50);
+		
+		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 60, 60);
 		
 	}
 

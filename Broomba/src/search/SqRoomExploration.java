@@ -3,6 +3,7 @@ package search;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
+import search.SquareMapping;
 
 /** This is the class SqRoomExploration
  *  Created by OneNationUnderCanadia
@@ -17,6 +18,7 @@ public class SqRoomExploration {
 	
 	// Global variables because I can
 	public DifferentialPilot marvin;
+	public SquareMapping sqm;
 	public RoomMappingA mapper;
 	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
 	public int[][] room;
@@ -28,10 +30,11 @@ public class SqRoomExploration {
 	public int height;
 	
 	
-	public SqRoomExploration(DifferentialPilot pilot, int w, int h) {
+	public SqRoomExploration(DifferentialPilot pilot, SquareMapping sq, int w, int h) {
 		
 		// The drivebase, so the robot can move
 		marvin = pilot;
+		sqm = sq;
 		
 		// The width and height of the room
 		width = w;
@@ -77,6 +80,7 @@ public class SqRoomExploration {
 		wasHere[x][y] = true;
 		
 		/** TODO clean square, use Joey's code (once it's done) */
+		sqm.sweepinSquares();
 		
 		// Try going left
 		if(x != 0) {

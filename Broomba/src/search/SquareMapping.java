@@ -33,8 +33,8 @@ public class SquareMapping {
 	}
 	
 	public void sweepinSquares(){
-		float[] map = findPerimeter();
-			spinSquares(findCenter(map), map);
+		//float[] map = findPerimeter();
+			spinSquares(200, 200);
 		}
 	
 
@@ -64,13 +64,13 @@ public class SquareMapping {
 		return center;
 	}
 	
-	public void spinSquares(float[] center, float[] map){
+	public void spinSquares(int xbounds, int ybounds){
 		//int area = (int) (map[0] * map[1]); 
 		//rma.mapping(0, area);
 		int leftOrRight=-1;
-		for(int i = 0; i < map[1]; i+=20){
+		for(int i = 0; i < ybounds; i+=20){
 		    leftOrRight*=-1;
-			marvin.travel(map[0]); 
+			marvin.travel(xbounds); 
 			marvin.rotate(90*leftOrRight);
 			marvin.travel(20);
 			marvin.rotate(90);

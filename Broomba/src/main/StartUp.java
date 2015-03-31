@@ -11,6 +11,7 @@ import lejos.nxt.SensorPort;
 // import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
 // import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.util.Delay;
 
 /** This is the  class StartUp
  *  Created by OneNationUnderCanadia
@@ -42,7 +43,7 @@ public class StartUp {
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
-		MotorPort.A.controlMotor(MotorPort.A.MAX_POWER,1);
+		
 		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
 		spinner.spinSquares(53, 50);
@@ -60,5 +61,12 @@ public class StartUp {
 			rma.waitForBumperPress();
 		}
 	}
-
+	public void strobe(){
+		for(int i=0; i<5000; i++){
+				MotorPort.A.controlMotor(MotorPort.A.MAX_POWER,1);
+				Delay.msDelay(100);
+				MotorPort.A.controlMotor(3, 3);
+				Delay.msDelay(100);
+			}
+	}
 }

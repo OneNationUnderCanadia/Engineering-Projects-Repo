@@ -1,5 +1,6 @@
 package main;
 
+import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
 import lejos.nxt.MotorPort;
@@ -41,7 +42,7 @@ public class StartUp {
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
-		
+		MotorPort.A.controlMotor(MotorPort.A.MAX_POWER,1);
 		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
 		spinner.spinSquares(53, 50);

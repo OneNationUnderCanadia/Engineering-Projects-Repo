@@ -44,10 +44,20 @@ public class StartUp {
 		
 		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
-		spinner.spinSquares(50, 50);
+		spinner.spinSquares(53, 50);
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 60, 60);
 		
+	}
+	
+	
+	public void angleTesting(int Range, DifferentialPilot pilot){
+		RoomMappingA rma = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
+		for(int angel = Range; Range<200; Range+= 5){
+			pilot.rotate(angel);
+			System.out.println("Rotation Degree: " + angel);
+			rma.waitForBumperPress();
+		}
 	}
 
 }

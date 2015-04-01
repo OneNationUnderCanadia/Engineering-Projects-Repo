@@ -109,6 +109,27 @@ public class RoomMappingA {
 	}
 	
 	
+	public double waitForBumperPress(int timeOut, double distance) {
+		
+		time.reset();
+		
+		marvin.forward();
+		
+		while(!touch1.isPressed() && !touch2.isPressed() && time.elapsed() < timeOut && marvin.getMovementIncrement() < distance) {
+			
+			Delay.msDelay(5);
+			
+		}
+		
+		marvin.stop();
+		
+		if(distance > marvin.getMovementIncrement()) return marvin.getMovementIncrement();
+		
+		else return 0;
+		
+	}
+	
+	
 	public boolean isBumperPressed() {
 		
 		if(touch1.isPressed() || touch2.isPressed()) return true;

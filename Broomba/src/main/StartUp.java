@@ -43,12 +43,10 @@ public class StartUp {
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
-		
-		//mapper.exploreRoom();
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
-		spinner.spinSquares(53, 50);
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 60, 60);
+		mapper.exploreRoom();
 		
 	}
 	

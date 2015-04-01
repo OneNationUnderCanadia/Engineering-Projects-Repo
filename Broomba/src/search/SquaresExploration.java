@@ -1,78 +1,84 @@
-/** This is the  class SquaresExploration
- *  Created by iasmh2015
- *  To 
- *  
- *  Created on Feb 25, 2015 at 8:23:26 AM
- */
 package search;
 
-import main.Drive;
+import lejos.nxt.ADSensorPort;
+import lejos.nxt.SensorPort;
+import lejos.nxt.TouchSensor;
+import lejos.robotics.navigation.DifferentialPilot;
 
-public class SquaresExploration {
-	
-	// private Drive marvin;
-	
-	int[][] maze; // The room- 1 means open, 2 means closed, 0 means unexplored
-	boolean[][] wasHere;
-	boolean[][] correctPath; // The solution to the maze
-	int startX, startY; // Starting X and Y values of maze
-	int width;
-	int height;
-	
-	public SquaresExploration(Drive drive, int w, int h) {
-		
-		// marvin = drive;
-		
-		maze = new int[w][h];
-		wasHere = new boolean[w][h];
-		correctPath = new boolean[w][h];
-		
-		width = w;
-		height = h;
-		
-	}
-	 
-	public void solveMaze() {
-	    
-	    for (int row = 0; row < maze.length; row++)  
-	        // Sets boolean Arrays to default values
-	        for (int col = 0; col < maze[row].length; col++){
-	            wasHere[row][col] = false;
-	            correctPath[row][col] = false;
-	        }
-	    recursiveSolve(startX, startY);
-	    // Will leave you with a boolean array (correctPath) 
-	    // with the path indicated by true values.
-	    // If b is false, there is no solution to the maze
-	}
-	
-	public boolean recursiveSolve(int x, int y) {
-		
-	    if (maze[x][y] == 2 || wasHere[x][y]) return false;  
-	    // If you are on a wall or already were here
-	    wasHere[x][y] = true;
-	    if (x != 0) // Checks if not on left edge
-	        if (recursiveSolve(x-1, y)) { // Recalls method one to the left
-	            correctPath[x][y] = true; // Sets that path value to true;
-	            return true;
-	        }
-	    if (x != width - 1) // Checks if not on right edge
-	        if (recursiveSolve(x+1, y)) { // Recalls method one to the right
-	            correctPath[x][y] = true;
-	            return true;
-	        }
-	    if (y != 0)  // Checks if not on top edge
-	        if (recursiveSolve(x, y-1)) { // Recalls method one up
-	            correctPath[x][y] = true;
-	            return true;
-	        }
-	    if (y != height- 1) // Checks if not on bottom edge
-	        if (recursiveSolve(x, y+1)) { // Recalls method one down
-	            correctPath[x][y] = true;
-	            return true;
-	        }
-	    return false;
-	    
-	}
+public class SquareMapping {
 
+	// The drive is global
+	private DifferentialPilot marvin;
+	private RoomMappingA rma;
+	
+	public int lastx;
+	public int lasty;
+	
+	// Init
+	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2) {
+		marvin = dp;
+		rma = new RoomMappingA(marvin, ts1,ts2);
+		
+		
+		
+	}
+	
+	public void goNinty(){
+		marvin.rotate(92);
+		/*TimerListener el = null;
+		Timer ts = new Timer(0, el);
+		ts.start();
+		marvin.setWheels(-10, 10);
+		while(ts.getDelay() < 525){}
+		marvin.setWheels(0, 0);
+		*/
+	}
+	
+	public void sweepinSquares(){
+		//float[] map = findPerimeter();
+			spinSquares(200, 200);
+		}
+	
+
+	public float[] findPerimeter(){ //Finds Perimeter then resets to origin; map = [0]xmax, [1]ymax
+		float map[] = new float[2];
+		
+			// Check if corner
+			for(int i = 0; i<2; i++){ //find up and left
+				marvin.forward();
+				rma.waitForBumperPress(); 
+				map[i] = marvin.getMovementIncrement();
+				goNinty(); 
+				marvin.stop();
+			}
+			marvin.travel(map[0]);
+			goNinty();
+			marvin.travel(map[1]);
+			return map;
+		}
+	
+	public float[] findCenter(float[]  map){ //returns center[]; center[0] = x coord, center[1] = y coord
+		float[] center = new float[1];
+		
+		center[0] = map[0]/2;
+		center[1] = map[1]/2;
+
+		return center;
+	}
+	
+	public void spinSquares(int xbounds, int ybounds){
+		//int area = (int) (map[0] * map[1]); 
+		//rma.mapping(0, area);
+		int leftOrRight=-1;
+		for(int i = ybounds; i >= 0; i-=20){ // 20 = length of robot
+		    leftOrRight*=-1;
+			marvin.travel(xbounds); 						
+			marvin.rotate(93*leftOrRight);
+			marvin.travel(20);
+			marvin.rotate(93*leftOrRight);
+			System.out.println("Distance bounded to go: " + i);
+		}
+		lastx = xbounds;
+		lasty = ybounds;
+	}
 }

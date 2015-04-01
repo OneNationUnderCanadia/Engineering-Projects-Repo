@@ -73,6 +73,8 @@ public class SqRoomExploration {
 	
 	private boolean recursiveExplore(int x, int y) {
 		
+		double back = 0;
+		
 		if(room[x][y] == 0) room[x][y] = 1;
 		
 		if(wasHere[x][y]) return false;
@@ -80,66 +82,28 @@ public class SqRoomExploration {
 		wasHere[x][y] = true;
 		
 		/** TODO clean square, use Joey's code (once it's done) */
-		sqm.sweepinSquares();
+		sqm.spinSquares(53, 50);
 		
 		// Try going left
 		if(x != 0) {
 			
 			/** TODO go left */
+			sqm.goNinty();
+			nextBox();
+			nextBox();
 			
-			marvin.travel(100);
+			back = mapper.waitForBumperPress(30000, 50);
 			
 			if(!mapper.isBumperPressed()) {
 				
+				sqm.goNinty();
 				recursiveExplore(x-1, y);
 				
 			}
 			else {
 				
 				accessable[x-1][y][0] = false;
-				backUp();
-				
-			}
-			
-		}
-		
-		// Try going right
-		if(x != width - 1) {
-			
-			/** TODO go right */
-			
-			marvin.travel(100);
-			
-			if(!mapper.isBumperPressed()) {
-				
-				recursiveExplore(x+1, y);
-				
-			}
-			else {
-				
-				accessable[x+1][y][1] = false;
-				backUp();
-				
-			}
-			
-		}
-		
-		// Try going down
-		if(y != 0) {
-			
-			/** TODO go down */
-			
-			marvin.travel(100);
-			
-			if(!mapper.isBumperPressed()) {
-				
-				recursiveExplore(x, y-1);
-				
-			}
-			else {
-				
-				accessable[x][y-1][2] = false;
-				backUp();
+				marvin.travel(back * -1);
 				
 			}
 			
@@ -149,18 +113,63 @@ public class SqRoomExploration {
 		if(y != height - 1) {
 			
 			/** TODO go up */
-			
-			marvin.travel(100);
+			nextBox();
+			back = mapper.waitForBumperPress(30000, 50);
 			
 			if(!mapper.isBumperPressed()) {
 				
+				sqm.goNinty();
 				recursiveExplore(x, y+1);
 				
 			}
 			else {
 				
 				accessable[x][y+1][3] = false;
-				backUp();
+				marvin.travel(back * -1);
+				
+			}
+			
+		}
+		
+		// Try going right
+		if(x != width - 1) {
+			
+			/** TODO go right */
+			nextBox();
+			back = mapper.waitForBumperPress(30000, 50);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				sqm.goNinty();
+				recursiveExplore(x+1, y);
+				
+			}
+			else {
+				
+				accessable[x+1][y][1] = false;
+				marvin.travel(back * -1);
+				
+			}
+			
+		}
+		
+		// Try going down
+		if(y != 0) {
+			
+			/** TODO go down */
+			nextBox();
+			back = mapper.waitForBumperPress(30000, 50);
+			
+			if(!mapper.isBumperPressed()) {
+				
+				sqm.goNinty();
+				recursiveExplore(x, y-1);
+				
+			}
+			else {
+				
+				accessable[x][y-1][2] = false;
+				marvin.travel(back * -1);
 				
 			}
 			
@@ -185,6 +194,13 @@ public class SqRoomExploration {
 		marvin.backward();
 		Delay.msDelay(1000);
 		marvin.stop();
+		
+	}
+	
+	private void nextBox() {
+		
+		sqm.goNinty();
+		marvin.travel(50);
 		
 	}
 

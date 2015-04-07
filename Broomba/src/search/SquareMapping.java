@@ -22,7 +22,7 @@ public class SquareMapping {
 	}
 	
 	public void goNinty(){
-		marvin.rotate(92);
+		marvin.rotate(95.5);
 		/*TimerListener el = null;
 		Timer ts = new Timer(0, el);
 		ts.start();
@@ -71,9 +71,9 @@ public class SquareMapping {
 		for(int i = ybounds; i >= 0; i-=20){ // 20 = length of robot
 		    leftOrRight*=-1;
 			marvin.travel(xbounds); 						
-			marvin.rotate(93*leftOrRight);
+			marvin.rotate(95.5*leftOrRight);
 			marvin.travel(20);
-			marvin.rotate(93*leftOrRight);
+			marvin.rotate(95.5*leftOrRight);
 			System.out.println("Distance bounded to go: " + i);
 		}
 	}

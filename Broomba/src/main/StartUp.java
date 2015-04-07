@@ -33,12 +33,6 @@ public class StartUp {
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
 		
-		// cf = new TetrixControllerFactory(SensorPort.S1);
-		// mc = cf.newMotorController();
-		
-		// TetrixRegulatedMotor motor1 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_1);
-		// TetrixRegulatedMotor motor2 = new TetrixRegulatedMotor(mc, TetrixMotorController.MOTOR_2);
-		
 		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		

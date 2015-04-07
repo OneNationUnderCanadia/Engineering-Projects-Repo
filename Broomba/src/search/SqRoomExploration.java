@@ -1,6 +1,5 @@
 package search;
 
-import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
@@ -67,8 +66,7 @@ public class SqRoomExploration {
 	        
 		}
 		
-		Button.waitForAnyPress();
-	    // recursiveExplore(startX, startY);
+	    recursiveExplore(startX, startY);
 		
 	}
 	

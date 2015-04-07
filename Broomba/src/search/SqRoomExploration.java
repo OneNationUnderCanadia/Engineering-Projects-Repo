@@ -1,5 +1,6 @@
 package search;
 
+import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
@@ -24,7 +25,7 @@ public class SqRoomExploration {
 	public int[][] room;
 	public boolean[][] wasHere;
 	// Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
-	// public boolean[][][] accessable;
+	public boolean[][][] accessable;
 	public int startX, startY;
 	public int width;
 	public int height;
@@ -43,7 +44,7 @@ public class SqRoomExploration {
 		// The room arrays
 		room = new int[w][h];
 		wasHere = new boolean[w][h];
-		// accessable = new boolean[w][h][4];
+		accessable = new boolean[w][h][4];
 		
 		// Sets the robot in the center of the room
 		startX = w/2;
@@ -66,7 +67,8 @@ public class SqRoomExploration {
 	        
 		}
 		
-	    recursiveExplore(startX, startY);
+		Button.waitForAnyPress();
+	    // recursiveExplore(startX, startY);
 		
 	}
 	
@@ -102,7 +104,7 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				// accessable[x-1][y][0] = false;
+				accessable[x-1][y][0] = false;
 				marvin.travel(back * -1);
 				
 			}
@@ -124,7 +126,7 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				// accessable[x][y+1][3] = false;
+				accessable[x][y+1][3] = false;
 				marvin.travel(back * -1);
 				
 			}
@@ -146,7 +148,7 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				// accessable[x+1][y][1] = false;
+				accessable[x+1][y][1] = false;
 				marvin.travel(back * -1);
 				
 			}
@@ -168,7 +170,7 @@ public class SqRoomExploration {
 			}
 			else {
 				
-				// accessable[x][y-1][2] = false;
+				accessable[x][y-1][2] = false;
 				marvin.travel(back * -1);
 				
 			}

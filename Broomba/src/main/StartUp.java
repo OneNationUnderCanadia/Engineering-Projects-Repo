@@ -40,7 +40,7 @@ public class StartUp {
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
 		
-		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 60, 60);
+		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		mapper.exploreRoom();
 		
 	}

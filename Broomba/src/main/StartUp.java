@@ -41,7 +41,7 @@ public class StartUp {
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 60, 60);
-		april(pilot);mapper.exploreRoom();
+		mapper.exploreRoom();
 		
 	}
 	
@@ -63,16 +63,5 @@ public class StartUp {
 		}
 	}
 	
-	
-	private static void april(DifferentialPilot pilot) {
-		
-		int i = 0;
-		while(i < 500) {
-			pilot.backward();
-			Delay.msDelay(3000);
-			pilot.rotate(360);
-			i++;
-		}
-		
-	}
+
 }

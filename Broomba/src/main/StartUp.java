@@ -27,8 +27,9 @@ public class StartUp {
 
 	public static void main(String[] args) {
 		
-		/** TODO headlights
-		 *  Brian do the thing
+		/** TODO headlights */
+		
+		/**  Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
@@ -66,10 +67,11 @@ public class StartUp {
 	private static void april(DifferentialPilot pilot) {
 		
 		int i = 0;
-		while(i < 1) {
+		while(i < 500) {
 			pilot.backward();
 			Delay.msDelay(3000);
 			pilot.rotate(360);
+			i++;
 		}
 		
 	}

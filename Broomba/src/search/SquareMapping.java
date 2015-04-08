@@ -51,11 +51,11 @@ public class SquareMapping {
 				marvin.forward();
 				rma.waitForBumperPress(); 
 				map[i] = marvin.getMovementIncrement();
-				goNinty(); 
+				goNinty(1); 
 				marvin.stop();
 			}
 			marvin.travel(map[0]);
-			goNinty();
+			goNinty(1);
 			marvin.travel(map[1]);
 			return map;
 		}

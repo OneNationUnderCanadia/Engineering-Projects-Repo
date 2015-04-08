@@ -79,7 +79,6 @@ public class SquareMapping {
 			goNinty(leftOrRight);
 			marvin.travel(20);
 			goNinty(leftOrRight);
-			System.out.println("Distance bounded to go: " + i);
 		}
 	}
 }

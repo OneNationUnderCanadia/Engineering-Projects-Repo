@@ -2,7 +2,6 @@ package search;
 
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.util.Delay;
 import search.SquareMapping;
 
 /** This is the class SqRoomExploration
@@ -88,7 +87,7 @@ public class SqRoomExploration {
 		if(x != 0) {
 			
 			/** TODO go left */
-			sqm.goNinty();
+			sqm.goNinty(1);
 			nextBox();
 			nextBox();
 			
@@ -96,7 +95,7 @@ public class SqRoomExploration {
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty();
+				sqm.goNinty(1);
 				recursiveExplore(x-1, y);
 				
 			}
@@ -118,7 +117,7 @@ public class SqRoomExploration {
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty();
+				sqm.goNinty(1);
 				recursiveExplore(x, y+1);
 				
 			}
@@ -140,7 +139,7 @@ public class SqRoomExploration {
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty();
+				sqm.goNinty(1);
 				recursiveExplore(x+1, y);
 				
 			}
@@ -162,7 +161,7 @@ public class SqRoomExploration {
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty();
+				sqm.goNinty(1);
 				recursiveExplore(x, y-1);
 				
 			}
@@ -180,26 +179,9 @@ public class SqRoomExploration {
 	}
 	
 	
-	private void goForward(int bumperTime) {
-		
-		marvin.forward();
-		mapper.waitForBumperPress(bumperTime);
-		marvin.stop();
-		
-	}
-	
-	
-	private void backUp() {
-		
-		marvin.backward();
-		Delay.msDelay(1000);
-		marvin.stop();
-		
-	}
-	
 	private void nextBox() {
 		
-		sqm.goNinty();
+		sqm.goNinty(1);
 		marvin.travel(50);
 		
 	}

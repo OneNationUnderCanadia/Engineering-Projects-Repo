@@ -1,8 +1,6 @@
 package search;
 
 import lejos.nxt.ADSensorPort;
-import lejos.nxt.SensorPort;
-import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
 public class SquareMapping {

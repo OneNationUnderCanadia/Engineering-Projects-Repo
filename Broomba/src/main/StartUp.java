@@ -30,7 +30,7 @@ public class StartUp {
 		
 		/** TODO headlights */
 		
-		/**  Brian do the thing
+		/** Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */

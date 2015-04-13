@@ -18,13 +18,15 @@ public class SquareMapping {
 	
 		
 	}
-	
-	public void goNinty(int i){
+	int numTurned = 0;
+	public void goNinty(int[] calibration, int i){
+		
 		if(i>0){
-			marvin.rotate(95.5);
+			//marvin.rotate(95.5);
+			
 		}else
 		{
-			marvin.rotate(-95.5);
+			//marvin.rotate(-95.5);
 		}
 		/*TimerListener el = null;
 		Timer ts = new Timer(0, el);

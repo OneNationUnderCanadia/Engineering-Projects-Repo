@@ -3,10 +3,12 @@ package main;
 import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
-import lejos.nxt.BasicMotorPort;
+import lejos.nxt.Button;
+import lejos.nxt.I2CSensor;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
+import lejos.nxt.addon.MagneticSensor;
 // import lejos.nxt.SensorPort;
 // import lejos.nxt.addon.tetrix.TetrixMotorController;
 // import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
@@ -30,7 +32,7 @@ public class StartUp {
 		
 		/** TODO headlights */
 		
-		/** Brian do the thing
+		/**  Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
@@ -40,10 +42,11 @@ public class StartUp {
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4);
+		Magnets magnet = new Magnets();
 		
-		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
-		mapper.exploreRoom();
-		
+		//SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
+		//mapper.exploreRoom();
+		magnet.calibrate(spinner);
 	}
 	
 	
@@ -57,12 +60,13 @@ public class StartUp {
 	}
 	public void strobe(){
 		for(int i=0; i<5000; i++){
-				MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER,1);
+				MotorPort.A.controlMotor(MotorPort.A.MAX_POWER,1);
 				Delay.msDelay(100);
 				MotorPort.A.controlMotor(3, 3);
 				Delay.msDelay(100);
 		}
 	}
 	
+
 	
 }

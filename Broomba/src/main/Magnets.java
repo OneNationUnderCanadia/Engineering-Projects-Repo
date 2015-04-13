@@ -10,15 +10,16 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	
     static int[] low = {10000,10000,10000,10000};
     static int[] high = {0,0,0,0};
+	static MagneticSensor compass = new MagneticSensor(SensorPort.S2);
 	
-	public static void calibrate(SquareMapping spinner){
+	public void calibrate(SquareMapping spinner){
 		/*I2CSensor magnet = new I2CSensor(SensorPort.S1);
 		byte[] buf = null;
 		int len=10;
 		magnet.getData(0x41, buf, len);
 		magnet.*/
 		int[][] data = new int[4][10];
-		MagneticSensor compass = new MagneticSensor(SensorPort.S2);
+
 		for(int i = 0; i< 4; i++){
 			for(int k = 0; k<10; k++){
 				Delay.msDelay(500);
@@ -48,5 +49,14 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	        }
 	        
         }
+	}
+	public int[] getHigh(){
+		return high;
+	}
+	public int[] getLow(){
+		return low;
+	}
+	public int getValue(){
+		return compass.readValue();
 	}
 }

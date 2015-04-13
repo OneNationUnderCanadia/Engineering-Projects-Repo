@@ -2,31 +2,44 @@ package search;
 
 import lejos.nxt.ADSensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
+import main.Magnets;
 
 public class SquareMapping {
 
 	// The drive is global
 	private DifferentialPilot marvin;
 	private RoomMappingA rma;
+	private Magnets magnet; 
 	
 	
 	// Init
-	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2) {
+	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2, Magnets magup) {
 		marvin = dp;
 		rma = new RoomMappingA(marvin, ts1,ts2);
-
-	
-		
+		magnet = magup;
 	}
+	
 	int numTurned = 0;
-	public void goNinty(int[] calibration, int i){
-		
+	
+	public void goNinty(int i){
 		if(i>0){
+			numTurned++;
 			//marvin.rotate(95.5);
+			int value = magnet.getValue();
+			while((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value)) {
+				marvin.rotateLeft();
+			}
+			
 			
 		}else
-		{
+		{		
+			numTurned--;
 			//marvin.rotate(-95.5);
+			int value = magnet.getValue();
+			while((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value)) {
+				marvin.rotateLeft();
+			}
+			
 		}
 		/*TimerListener el = null;
 		Timer ts = new Timer(0, el);
@@ -35,6 +48,12 @@ public class SquareMapping {
 		while(ts.getDelay() < 525){}
 		marvin.setWheels(0, 0);
 		*/
+		if(numTurned >= 4){
+			numTurned = 0;
+		}
+		if(numTurned <= 0){
+			numTurned = 4+numTurned;
+		}
 	}
 	
 	public void sweepinSquares(){

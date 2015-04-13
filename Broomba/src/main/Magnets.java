@@ -26,7 +26,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 				data[i][k] = compass.readValue();
 				System.out.println(data[i][k]);
 			}
-			spinner.goNinty(1);
+			spinner.magicNinty(1);
 		}
 		highAndLow(data);
 	}

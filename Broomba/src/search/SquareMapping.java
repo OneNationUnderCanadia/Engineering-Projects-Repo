@@ -56,6 +56,14 @@ public class SquareMapping {
 		}
 	}
 	
+	public void magicNinty(int i){
+		if(i>0){
+			marvin.rotate(95.5);
+		}else{
+			marvin.rotate(-95.5);
+		}
+	}
+	
 	public void sweepinSquares(){
 		//float[] map = findPerimeter();
 			spinSquares(200, 200);

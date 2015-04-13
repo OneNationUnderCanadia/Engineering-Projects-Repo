@@ -47,6 +47,7 @@ public class StartUp {
 		
 		//SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		//mapper.exploreRoom();
+		Button.waitForAnyPress();
 		magnet.calibrate(spinner);
 		spinner.sweepinSquares();
 	}

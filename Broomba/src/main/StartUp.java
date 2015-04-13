@@ -9,10 +9,6 @@ import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.addon.MagneticSensor;
-// import lejos.nxt.SensorPort;
-// import lejos.nxt.addon.tetrix.TetrixMotorController;
-// import lejos.nxt.addon.tetrix.TetrixRegulatedMotor;
-// import lejos.nxt.addon.tetrix.TetrixControllerFactory;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 

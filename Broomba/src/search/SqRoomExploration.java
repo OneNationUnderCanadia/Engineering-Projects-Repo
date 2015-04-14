@@ -59,7 +59,7 @@ public class SqRoomExploration {
 	        // Sets boolean Arrays to default values
 	        for (int col = 0; col < room[row].length; col++){
 	        	
-	            wasHere[row][col] = false;
+	            wasHere[row][col] = true;
 	            
 	        }
 	        
@@ -91,7 +91,7 @@ public class SqRoomExploration {
 			nextBox();
 			nextBox();
 			
-			back = mapper.waitForBumperPress(30000, 50);
+			back = mapper.waitForBumperPress(30000, 60);
 			
 			if(!mapper.isBumperPressed()) {
 				
@@ -113,7 +113,7 @@ public class SqRoomExploration {
 			
 			/** TODO go up */
 			nextBox();
-			back = mapper.waitForBumperPress(30000, 50);
+			back = mapper.waitForBumperPress(30000, 10);
 			
 			if(!mapper.isBumperPressed()) {
 				
@@ -135,11 +135,13 @@ public class SqRoomExploration {
 			
 			/** TODO go right */
 			nextBox();
-			back = mapper.waitForBumperPress(30000, 50);
+			nextBox();
+			sqm.goNinty(-1);
+			back = mapper.waitForBumperPress(30000, 10);
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty(1);
+				sqm.goNinty(-1);
 				recursiveExplore(x+1, y);
 				
 			}
@@ -156,11 +158,14 @@ public class SqRoomExploration {
 		if(y != 0) {
 			
 			/** TODO go down */
+			sqm.goNinty(1);
 			nextBox();
-			back = mapper.waitForBumperPress(30000, 50);
+			sqm.goNinty(-1);
+			back = mapper.waitForBumperPress(30000, 60);
 			
 			if(!mapper.isBumperPressed()) {
 				
+				sqm.goNinty(1);
 				sqm.goNinty(1);
 				recursiveExplore(x, y-1);
 				

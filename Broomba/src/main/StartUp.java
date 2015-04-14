@@ -1,6 +1,7 @@
 package main;
 
 import search.RoomMappingA;
+import search.SqRoomExploration;
 import search.SquareMapping;
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.Button;
@@ -40,9 +41,13 @@ public class StartUp {
 
 		
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
+		GUI gui = new GUI();
 		Button.waitForAnyPress();
+		gui.execute("Calibration");
 		magnet.calibrate(spinner);
+		gui.execute("Exploring");
 		mapper.exploreRoom();
+		gui.execute("All Done!");
 	}
 	
 	

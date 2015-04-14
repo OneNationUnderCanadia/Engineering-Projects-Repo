@@ -17,13 +17,14 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 		int len=10;
 		magnet.getData(0x41, buf, len);
 		magnet.*/
+		GUI gui = new GUI();
 		int[][] data = new int[4][10];
 
 		for(int i = 0; i< 4; i++){
 			for(int k = 0; k<10; k++){
 				Delay.msDelay(500);
 				data[i][k] = compass.readValue();
-				System.out.println(data[i][k]);
+				gui.valuePrint(data[i][k]);
 			}
 			spinner.magicNinty(1);
 		}

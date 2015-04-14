@@ -1,10 +1,13 @@
 package main;
 
+import lejos.nxt.BasicMotorPort;
 import lejos.nxt.LCD;
+import lejos.nxt.MotorPort;
 import lejos.util.Delay;
 
-public class GUI {
+public class GUI extends Thread{
 	public GUI(){
+		this.start();
 		LCD.clear();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X              X");
@@ -26,6 +29,16 @@ public class GUI {
 		System.out.println("X              X");
 		System.out.println("XXXXXXXXXXXXXXXX");
 		Delay.msDelay(500);
+	}
+	public void valuePrint(int value){
+		LCD.clear();
+		System.out.println("XXXXXXXXXXXXXXXX");
+		System.out.println("X  MAGNET TEST X");
+		System.out.println("X     VALUE:   X");
+		System.out.println("X              X");
+		System.out.println("X      "+value+"     X");
+		System.out.println("X              X");
+		System.out.println("XXXXXXXXXXXXXXXX");
 	}
     
 	public String step(String whichpart){
@@ -50,5 +63,14 @@ public class GUI {
 		
 		return spaces + whichpart + spaces.subSequence(1, spaces.length());
 		
+	}
+	
+	public void run(){
+		for(int i=0; i<5000; i++){
+				MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1);
+				Delay.msDelay(100);
+				MotorPort.A.controlMotor(3, 3);
+				Delay.msDelay(100);
+		}
 	}
 }

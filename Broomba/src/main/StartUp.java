@@ -62,16 +62,5 @@ public class StartUp {
 			System.out.println("Rotation Degree: " + angel);
 			rma.waitForBumperPress();
 		}
-	}
-	public void strobe(){
-		for(int i=0; i<5000; i++){
-				MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1);
-				Delay.msDelay(100);
-				MotorPort.A.controlMotor(3, 3);
-				Delay.msDelay(100);
-		}
-	}
-	
-
-	
+	}	
 }

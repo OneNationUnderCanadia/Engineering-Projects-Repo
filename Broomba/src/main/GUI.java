@@ -29,18 +29,26 @@ public class GUI {
 	}
     
 	public String step(String whichpart){
+		
 		int inbetween = 0;
+		
 		if(whichpart.length() <14){
 			inbetween = (14 - whichpart.length())/2;
-		}else if(whichpart.length() == 14){
+		}
+		else if(whichpart.length() == 14){
 			inbetween = 0;
-		}else if (whichpart.length() > 14){
+		}
+		else if (whichpart.length() > 14){
 			inbetween =0;
 		}
+		
 		String spaces = "";
+		
 		for(int i = 0; i<=inbetween; i++){
 			spaces = spaces+" ";
 		}
+		
 		return spaces + whichpart + spaces.subSequence(1, spaces.length());
+		
 	}
 }

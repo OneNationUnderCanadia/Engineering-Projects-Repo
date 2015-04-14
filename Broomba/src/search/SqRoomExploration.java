@@ -2,6 +2,7 @@ package search;
 
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
+import main.GUI;
 import search.SquareMapping;
 
 /** This is the class SqRoomExploration
@@ -27,7 +28,7 @@ public class SqRoomExploration {
 	public int startX, startY;
 	public int width;
 	public int height;
-	
+	private GUI printout;
 	
 	public SqRoomExploration(DifferentialPilot pilot, SquareMapping sq, int w, int h) {
 		
@@ -55,6 +56,8 @@ public class SqRoomExploration {
 	
 	public void exploreRoom() {
 		
+		printout.execute("Testing 1");
+		
 		for (int row = 0; row < room.length; row++){
 	        // Sets boolean Arrays to default values
 	        for (int col = 0; col < room[row].length; col++){
@@ -65,12 +68,16 @@ public class SqRoomExploration {
 	        
 		}
 		
+		printout.execute("Testing 2");
+		
 	    recursiveExplore(startX, startY);
 		
 	}
 	
 	
 	private boolean recursiveExplore(int x, int y) {
+		
+		printout.execute("Testing 3+");
 		
 		double back = 0;
 		

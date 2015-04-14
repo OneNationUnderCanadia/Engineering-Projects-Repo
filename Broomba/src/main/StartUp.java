@@ -39,11 +39,10 @@ public class StartUp {
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, magnet);
 
 		
-		//SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
-		//mapper.exploreRoom();
+		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		Button.waitForAnyPress();
 		magnet.calibrate(spinner);
-		spinner.sweepinSquares();
+		mapper.exploreRoom();
 	}
 	
 	

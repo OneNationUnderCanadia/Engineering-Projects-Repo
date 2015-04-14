@@ -51,6 +51,8 @@ public class SqRoomExploration {
 		
 		mapper = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
+		printout = new GUI();
+		
 	}
 	
 	

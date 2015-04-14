@@ -26,21 +26,20 @@ public class SquareMapping {
 			numTurned++;
 			//marvin.rotate(95.5);
 			int value = magnet.getValue();
-			while((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value)) {
-				marvin.rotateRight();
-			}
-			
-			
+			while(!((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value))) {
+				marvin.rotate(2);
+			}	
 		}else
 		{		
 			numTurned--;
 			//marvin.rotate(-95.5);
 			int value = magnet.getValue();
-			while((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value)) {
+			while(!((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value))) {
 				marvin.rotateRight();
 			}
 			
 		}
+		marvin.stop();
 		/*TimerListener el = null;
 		Timer ts = new Timer(0, el);
 		ts.start();

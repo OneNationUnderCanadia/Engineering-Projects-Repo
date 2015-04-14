@@ -35,7 +35,7 @@ public class SquareMapping {
 			//marvin.rotate(-95.5);
 			int value = magnet.getValue();
 			while(!((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value))) {
-				marvin.rotateRight();
+				marvin.rotate(2);
 			}
 			
 		}

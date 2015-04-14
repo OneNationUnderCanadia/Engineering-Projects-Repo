@@ -2,11 +2,16 @@ package main;
 
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.LCD;
+import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
+import lejos.nxt.SensorPort;
 import lejos.util.Delay;
 
 public class GUI extends Thread{
+	
+	LightSensor light = new LightSensor(SensorPort.S1, false);
 	public GUI(){
+		
 		this.start();
 		LCD.clear();
 		System.out.println("XXXXXXXXXXXXXXXX");
@@ -67,10 +72,12 @@ public class GUI extends Thread{
 	
 	public void run(){
 		for(int i=0; i<5000; i++){
+			if(light.readValue() < 20){
 				MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1);
 				Delay.msDelay(100);
 				MotorPort.A.controlMotor(3, 3);
 				Delay.msDelay(100);
+			}
 		}
 	}
 }

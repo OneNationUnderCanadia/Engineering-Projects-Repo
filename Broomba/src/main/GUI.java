@@ -5,12 +5,16 @@ import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
 import lejos.nxt.SensorPort;
+import lejos.nxt.Sound;
 import lejos.util.Delay;
 
 public class GUI extends Thread{
 	
 	LightSensor light = new LightSensor(SensorPort.S1, false);
+	Sound sd;
+	
 	public GUI(){
+		sd.setVolume(50);
 		
 		this.start();
 		LCD.clear();
@@ -26,6 +30,7 @@ public class GUI extends Thread{
 	
 	public void execute(String whatcalled){
 		LCD.clear();
+		sd.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X              X");
 		System.out.println("X  EXECUTING:  X");
@@ -37,6 +42,7 @@ public class GUI extends Thread{
 	}
 	public void valuePrint(int value){
 		LCD.clear();
+		sd.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X  MAGNET TEST X");
 		System.out.println("X     VALUE:   X");

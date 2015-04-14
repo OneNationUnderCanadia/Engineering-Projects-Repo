@@ -28,7 +28,6 @@ public class SqRoomExploration {
 	public int startX, startY;
 	public int width;
 	public int height;
-	private GUI printout;
 	
 	public SqRoomExploration(DifferentialPilot pilot, SquareMapping sq, int w, int h) {
 		
@@ -51,8 +50,6 @@ public class SqRoomExploration {
 		
 		mapper = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
-		printout = new GUI();
-		
 	}
 	
 	
@@ -74,8 +71,6 @@ public class SqRoomExploration {
 	
 	
 	private boolean recursiveExplore(int x, int y) {
-		
-		printout.execute("Testing 3+");
 		
 		double back = 0;
 		

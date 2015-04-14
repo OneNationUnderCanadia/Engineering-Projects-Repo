@@ -1,6 +1,5 @@
 package main;
 
-import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.addon.MagneticSensor;
 import lejos.util.Delay;

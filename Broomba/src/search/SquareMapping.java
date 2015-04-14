@@ -17,6 +17,7 @@ public class SquareMapping {
 		marvin = dp;
 		rma = new RoomMappingA(marvin, ts1,ts2);
 		magnet = magup;
+		magnet.calibrate(marvin);
 	}
 	
 	int numTurned = 0;

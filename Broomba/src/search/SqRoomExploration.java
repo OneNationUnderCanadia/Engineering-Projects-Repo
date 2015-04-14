@@ -58,8 +58,6 @@ public class SqRoomExploration {
 	
 	public void exploreRoom() {
 		
-		printout.execute("Testing 1");
-		
 		for (int row = 0; row < room.length; row++){
 	        // Sets boolean Arrays to default values
 	        for (int col = 0; col < room[row].length; col++){
@@ -69,8 +67,6 @@ public class SqRoomExploration {
 	        }
 	        
 		}
-		
-		printout.execute("Testing 2");
 		
 	    recursiveExplore(startX, startY);
 		

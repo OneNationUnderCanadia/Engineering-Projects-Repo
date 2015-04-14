@@ -2,6 +2,7 @@ package main;
 
 import lejos.nxt.SensorPort;
 import lejos.nxt.addon.MagneticSensor;
+import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 import search.SquareMapping;
 
@@ -11,7 +12,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
     static int[] high = {0,0,0,0};
 	static MagneticSensor compass = new MagneticSensor(SensorPort.S2);
 	
-	public void calibrate(SquareMapping spinner){
+	public void calibrate(DifferentialPilot pilot){
 		/*I2CSensor magnet = new I2CSensor(SensorPort.S1);
 		byte[] buf = null;
 		int len=10;
@@ -26,7 +27,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 				data[i][k] = compass.readValue();
 				gui.valuePrint(data[i][k]);
 			}
-			spinner.magicNinty(1);
+			pilot.rotate(95.5);
 		}
 		highAndLow(data);
 	}

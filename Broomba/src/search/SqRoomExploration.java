@@ -80,16 +80,16 @@ public class SqRoomExploration {
 		
 		wasHere[x][y] = true;
 		
-		/** TODO clean square, use Joey's code (once it's done) */
+		/** clean square, use Joey's code */
 		sqm.spinSquares(53, 50);
 		
+		/** go left */
+		sqm.goNinty(1);
+		nextBox();
+		nextBox();
+		
 		// Try going left
-		if(x != 0) {
-			
-			/** TODO go left */
-			sqm.goNinty(1);
-			nextBox();
-			nextBox();
+		if(x != 0 && accessable[x-1][y][0]) {
 			
 			back = mapper.waitForBumperPress(30000, 60);
 			
@@ -97,6 +97,8 @@ public class SqRoomExploration {
 				
 				sqm.goNinty(1);
 				recursiveExplore(x-1, y);
+				sqm.goNinty(-1);
+				marvin.travel(back * -1);
 				
 			}
 			else {
@@ -108,17 +110,18 @@ public class SqRoomExploration {
 			
 		}
 		
+		/** go up */
+		nextBox();
+		
 		// Try going up
-		if(y != height - 1) {
+		if(y != height - 1 && accessable[x][y+1][3]) {
 			
-			/** TODO go up */
-			nextBox();
 			back = mapper.waitForBumperPress(30000, 10);
 			
 			if(!mapper.isBumperPressed()) {
 				
-				sqm.goNinty(1);
 				recursiveExplore(x, y+1);
+				marvin.travel(back * -1);
 				
 			}
 			else {
@@ -130,19 +133,22 @@ public class SqRoomExploration {
 			
 		}
 		
+		/** go right */
+		nextBox();
+		nextBox();
+		sqm.goNinty(-1);
+		
 		// Try going right
-		if(x != width - 1) {
+		if(x != width - 1 && accessable[x+1][y][1]) {
 			
-			/** TODO go right */
-			nextBox();
-			nextBox();
-			sqm.goNinty(-1);
 			back = mapper.waitForBumperPress(30000, 10);
 			
 			if(!mapper.isBumperPressed()) {
 				
 				sqm.goNinty(-1);
 				recursiveExplore(x+1, y);
+				sqm.goNinty(1);
+				marvin.travel(back * -1);
 				
 			}
 			else {
@@ -154,13 +160,14 @@ public class SqRoomExploration {
 			
 		}
 		
+		/** go down */
+		sqm.goNinty(1);
+		nextBox();
+		sqm.goNinty(-1);
+		
 		// Try going down
-		if(y != 0) {
+		if(y != 0 && accessable[x][y-1][2]) {
 			
-			/** TODO go down */
-			sqm.goNinty(1);
-			nextBox();
-			sqm.goNinty(-1);
 			back = mapper.waitForBumperPress(30000, 60);
 			
 			if(!mapper.isBumperPressed()) {
@@ -168,6 +175,8 @@ public class SqRoomExploration {
 				sqm.goNinty(1);
 				sqm.goNinty(1);
 				recursiveExplore(x, y-1);
+				sqm.goNinty(-1);
+				sqm.goNinty(-1);
 				
 			}
 			else {

@@ -4,7 +4,6 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.addon.MagneticSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
-import search.SquareMapping;
 
 public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	

@@ -2,7 +2,6 @@ package search;
 
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
-import main.GUI;
 import search.SquareMapping;
 
 /** This is the class SqRoomExploration

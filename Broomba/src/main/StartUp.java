@@ -3,13 +3,11 @@ package main;
 import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
-import lejos.nxt.BasicMotorPort;
 import lejos.nxt.Button;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.util.Delay;
 
 /** This is the  class StartUp
  *  Created by OneNationUnderCanadia
@@ -24,8 +22,6 @@ public class StartUp {
 	// private static TetrixMotorController mc;
 
 	public static void main(String[] args) {
-		
-		/** TODO headlights */
 		
 		/**  Brian do the thing
 		 *  Joey do the thing

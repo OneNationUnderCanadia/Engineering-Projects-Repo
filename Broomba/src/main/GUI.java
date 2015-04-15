@@ -14,7 +14,7 @@ public class GUI extends Thread{
 	Sound sd;
 	
 	public GUI(){
-		sd.setVolume(50);
+		Sound.setVolume(50);
 		
 		this.start();
 		LCD.clear();
@@ -30,7 +30,7 @@ public class GUI extends Thread{
 	
 	public void execute(String whatcalled){
 		LCD.clear();
-		sd.beep();
+		Sound.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X              X");
 		System.out.println("X  EXECUTING:  X");
@@ -42,7 +42,7 @@ public class GUI extends Thread{
 	}
 	public void valuePrint(int value){
 		LCD.clear();
-		sd.beep();
+		Sound.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X  MAGNET TEST X");
 		System.out.println("X     VALUE:   X");

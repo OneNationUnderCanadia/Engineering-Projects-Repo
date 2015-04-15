@@ -22,7 +22,7 @@ public class SquareMapping {
 	
 	int numTurned = 0;
 	
-	public void goNinty(int i){
+	public void magicNinty(int i){
 		if(i>0){
 			numTurned++;
 			//marvin.rotate(95.5);
@@ -56,7 +56,7 @@ public class SquareMapping {
 		}
 	}
 	
-	public void magicNinty(int i){
+	public void goNinty(int i){
 		if(i>0){
 			marvin.rotate(95.5);
 		}else{

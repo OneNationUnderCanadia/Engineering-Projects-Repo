@@ -4,6 +4,7 @@ import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
 import lejos.nxt.Button;
+import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
@@ -30,6 +31,7 @@ public class StartUp {
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, new NXTRegulatedMotor(MotorPort.B), new NXTRegulatedMotor(MotorPort.C), true);
 		Magnets magnet = new Magnets();
+		Compass norty = new Compass(new LightSensor(SensorPort.S4), pilot);
 		
 		GUI gui = new GUI();
 		Button.waitForAnyPress();

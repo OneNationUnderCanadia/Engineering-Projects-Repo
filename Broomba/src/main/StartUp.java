@@ -23,15 +23,12 @@ public class StartUp {
 
 	public static void main(String[] args) {
 		
-		/**  Brian do the thing
+		/** Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
 		
-		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
-		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
-		
-		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
+		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, new NXTRegulatedMotor(MotorPort.B), new NXTRegulatedMotor(MotorPort.C), true);
 		Magnets magnet = new Magnets();
 		
 		GUI gui = new GUI();

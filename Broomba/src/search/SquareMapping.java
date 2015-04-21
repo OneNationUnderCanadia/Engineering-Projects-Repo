@@ -3,6 +3,7 @@ package search;
 import lejos.nxt.ADSensorPort;
 import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.util.Delay;
 import main.Compass;
 
 public class SquareMapping {
@@ -52,19 +53,27 @@ public class SquareMapping {
 			}*/
 		}
 		if(numTurned == 0){
-			while(light.readNormalizedValue() < compass.getHigh()-10){
+			System.out.println("north");
+			Delay.msDelay(1000);
+			while(compass.getHigh() > light.readNormalizedValue()){
 				marvin.rotate(2);
 			}
 		if(numTurned == 1){
+			System.out.println("east");
+			Delay.msDelay(1000);
 			marvin.rotate(95.5);
 		}else
 		if(numTurned == 2){
-			while(light.readNormalizedValue() > compass.getLow()+10){
+			System.out.println("south");
+			Delay.msDelay(1000);
+			while(compass.getLow() < light.readNormalizedValue()){
 				marvin.rotate(2);
 			}
 			
 		}else
 		if(numTurned == 3){
+			System.out.println("west");
+			Delay.msDelay(500);
 			marvin.rotate(95.5);
 		}else
 		{

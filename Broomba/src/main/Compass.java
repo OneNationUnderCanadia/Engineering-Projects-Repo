@@ -1,7 +1,6 @@
 package main;
 
 import lejos.nxt.BasicMotorPort;
-import lejos.nxt.Button;
 import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
 import lejos.robotics.navigation.DifferentialPilot;
@@ -46,7 +45,7 @@ public class Compass {
 		south = light.readNormalizedValue();
 		gui.execute("Found south");*/
 		byte[] buf = null;
-		int len=10;
+		int len = 10;
 		GUI gui = new GUI();
 		int[] data = new int[180];
 

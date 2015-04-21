@@ -2,9 +2,7 @@ package main;
 
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.LCD;
-import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
-import lejos.nxt.SensorPort;
 import lejos.nxt.Sound;
 import lejos.util.Delay;
 

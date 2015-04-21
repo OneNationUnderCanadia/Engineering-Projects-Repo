@@ -2,10 +2,7 @@ package main;
 
 import search.BasicCleaner;
 import search.RoomMappingA;
-import search.SqRoomExploration;
-import search.SquareMapping;
 import lejos.nxt.Button;
-import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;

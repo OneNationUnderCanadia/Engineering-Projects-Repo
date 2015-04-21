@@ -1,6 +1,5 @@
 package main;
 
-import search.BasicCleaner;
 import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
@@ -37,8 +36,6 @@ public class StartUp {
 		//Magnets magnet = new Magnets();
 		LightSensor lighter= new LightSensor(SensorPort.S1, true);
 		Compass norty = new Compass(lighter, pilot);
-		RoomMappingA rma = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
-		
 		GUI gui = new GUI();
 		gui.setStrobeDelay(10);
 		Button.waitForAnyPress();
@@ -51,7 +48,7 @@ public class StartUp {
 		norty.calibrate();
 		//norty.setCalibration(452, 0);
 		System.out.println("what's the high?");
-			System.out.println(norty.getHigh());
+		System.out.println(norty.getHigh());
 		System.out.println("what's the low?");
 		System.out.println(norty.getLow());
 		Button.waitForAnyPress();

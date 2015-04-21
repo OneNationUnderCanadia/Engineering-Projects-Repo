@@ -32,32 +32,34 @@ public class StartUp {
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
 		//Magnets magnet = new Magnets();
-		//LightSensor lighter= new LightSensor(SensorPort.S1, true);
-		//Compass norty = new Compass(lighter, pilot);
+		LightSensor lighter= new LightSensor(SensorPort.S1, true);
+		Compass norty = new Compass(lighter, pilot);
 		RoomMappingA rma = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
 		GUI gui = new GUI();
 		gui.setStrobeDelay(10);
 		Button.waitForAnyPress();
 		gui.setStrobeDelay(100);
-		/*
+		
 		gui.execute("Calibration: 1");
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, lighter, norty);
 		
 		gui.execute("Calibration: 2");
-		norty.calibrate();
+		//norty.calibrate();
+		norty.setCalibration(452, 0);
+		System.out.println("what's the high?");
 			System.out.println(norty.getHigh());
-		System.out.println("want lows?");
+		System.out.println("what's the low?");
+		System.out.println(norty.getLow());
 		Button.waitForAnyPress();
-			System.out.println(norty.getLow());
 		gui.setStrobeDelay(1000);
 		gui.execute("Exploring");
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		mapper.exploreRoom();
 		
-		gui.execute("All Done!");*/
-		BasicCleaner bc = new BasicCleaner(pilot, rma);
-		bc.cleanRoom(5);
+		gui.execute("All Done!");
+		//BasicCleaner bc = new BasicCleaner(pilot, rma);
+		//bc.cleanRoom(50);
 	}
 	
 	

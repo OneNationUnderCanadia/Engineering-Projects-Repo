@@ -31,7 +31,7 @@ public class BasicCleaner {
 			mapper.waitForBumperPress();
 			marvin.travel(-10);
 			marvin.stop();
-			marvin.rotate((Math.random() * 359) + 1);
+			marvin.rotate((Math.random() * 280) + 40);
 			
 		}
 		

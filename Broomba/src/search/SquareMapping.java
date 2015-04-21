@@ -34,18 +34,23 @@ public class SquareMapping {
 			marvin.rotate(-95.5);
 		}
 	}
+	
 	int numTurned = 0;
 	public void goNinty(int i){ //0=north, 1=east, 2=south, 3west
 		if(i>0){
-			numTurned++;
+			numTurned = (numTurned + 1) % 4;
 		/*	//marvin.rotate(95.5);
 			int value = light.readNormalizedValue();
 			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {
 				marvin.rotate(2);
 			}	*/
 		}else
-		{	/*	
-			numTurned--;
+		{	
+			numTurned = (numTurned - 1) % 4;
+			if (numTurned < 0) {
+				numTurned += 4;
+			}
+			/*
 			//marvin.rotate(-95.5);
 			int value = light.getNormalizedLightValue();
 			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {

@@ -1,7 +1,9 @@
 package search;
 
 import lejos.nxt.ADSensorPort;
+import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
+import main.Compass;
 import main.Magnets;
 
 public class SquareMapping {
@@ -9,58 +11,67 @@ public class SquareMapping {
 	// The drive is global
 	private DifferentialPilot marvin;
 	private RoomMappingA rma;
-	private Magnets magnet; 
+	private LightSensor light;
+	private Compass compass;
 	
 	
 	// Init
-	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2, Magnets magup) {
+	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2, LightSensor ls, Compass cps) {
 		marvin = dp;
 		rma = new RoomMappingA(marvin, ts1,ts2);
-		magnet = magup;
-		magnet.calibrate(marvin);
+		light = ls;
+		compass = cps;
+		
 	}
 	
-	int numTurned = 0;
+
 	
 	public void magicNinty(int i){
-		if(i>0){
-			numTurned++;
-			//marvin.rotate(95.5);
-			int value = magnet.getValue();
-			while(!((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value))) {
-				marvin.rotate(2);
-			}	
-		}else
-		{		
-			numTurned--;
-			//marvin.rotate(-95.5);
-			int value = magnet.getValue();
-			while(!((magnet.getHigh()[numTurned] > value) && (magnet.getLow()[numTurned] < value))) {
-				marvin.rotate(2);
-			}
-			
-		}
 		marvin.stop();
-		/*TimerListener el = null;
-		Timer ts = new Timer(0, el);
-		ts.start();
-		marvin.setWheels(-10, 10);
-		while(ts.getDelay() < 525){}
-		marvin.setWheels(0, 0);
-		*/
-		if(numTurned >= 4){
-			numTurned = 0;
-		}
-		if(numTurned <= 0){
-			numTurned = 3;
-		}
-	}
-	
-	public void goNinty(int i){
 		if(i>0){
 			marvin.rotate(95.5);
 		}else{
 			marvin.rotate(-95.5);
+		}
+	}
+	int numTurned = 0;
+	public void goNinty(int i){ //0=north, 1=east, 2=south, 3west
+		if(i>0){
+			numTurned++;
+		/*	//marvin.rotate(95.5);
+			int value = light.readNormalizedValue();
+			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {
+				marvin.rotate(2);
+			}	*/
+		}else
+		{	/*	
+			numTurned--;
+			//marvin.rotate(-95.5);
+			int value = light.getNormalizedLightValue();
+			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {
+				marvin.rotate(2);
+			}*/
+		}
+		if(numTurned == 0){
+			while(light.readNormalizedValue() < compass.getHigh()-10){
+				marvin.rotate(2);
+			}
+		if(numTurned == 1){
+			marvin.rotate(95.5);
+		}else
+		if(numTurned == 2){
+			while(light.readNormalizedValue() > compass.getLow()+10){
+				marvin.rotate(2);
+			}
+			
+		}else
+		if(numTurned == 3){
+			marvin.rotate(95.5);
+		}else
+		{
+			if(numTurned > 3){numTurned = 0;}
+			if(numTurned < 0){numTurned = 3;}
+		}
 		}
 	}
 	

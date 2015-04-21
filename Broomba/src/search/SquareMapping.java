@@ -63,6 +63,7 @@ public class SquareMapping {
 			while(compass.getHigh() > light.readNormalizedValue()){
 				marvin.rotate(2);
 			}
+		}
 		if(numTurned == 1){
 			System.out.println("east");
 			Delay.msDelay(1000);
@@ -80,11 +81,6 @@ public class SquareMapping {
 			System.out.println("west");
 			Delay.msDelay(500);
 			marvin.rotate(95.5);
-		}else
-		{
-			if(numTurned > 3){numTurned = 0;}
-			if(numTurned < 0){numTurned = 3;}
-		}
 		}
 	}
 	

@@ -10,8 +10,9 @@ import lejos.util.Delay;
 
 public class GUI extends Thread{
 	
-	LightSensor light = new LightSensor(SensorPort.S1, false);
+	//LightSensor light = new LightSensor(SensorPort.S1, false);
 	Sound sd;
+	private int delay = 100;
 	
 	public GUI(){
 		Sound.setVolume(50);
@@ -28,9 +29,15 @@ public class GUI extends Thread{
 		Delay.msDelay(500);
 	}
 	
+	public GUI(String s){
+		//I don't want it
+		this.start();
+		LCD.clear();
+	}
+	
 	public void execute(String whatcalled){
 		LCD.clear();
-		Sound.beep();
+		//Sound.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X              X");
 		System.out.println("X  EXECUTING:  X");
@@ -42,7 +49,7 @@ public class GUI extends Thread{
 	}
 	public void valuePrint(int value){
 		LCD.clear();
-		Sound.beep();
+		//Sound.beep();
 		System.out.println("XXXXXXXXXXXXXXXX");
 		System.out.println("X  MAGNET TEST X");
 		System.out.println("X     VALUE:   X");
@@ -76,11 +83,14 @@ public class GUI extends Thread{
 		
 	}
 	
+	public void setStrobeDelay(int i){
+		delay = i;
+	}
 	public void run(){
 		for(int i=0; i<5000; i++){
-			if(light.readValue() < 20){
+			if(true){
 				MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1);
-				Delay.msDelay(100);
+				Delay.msDelay(delay);
 				MotorPort.A.controlMotor(3, 3);
 				Delay.msDelay(100);
 			}

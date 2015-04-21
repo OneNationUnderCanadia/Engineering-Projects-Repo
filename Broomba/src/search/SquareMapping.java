@@ -4,7 +4,6 @@ import lejos.nxt.ADSensorPort;
 import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import main.Compass;
-import main.Magnets;
 
 public class SquareMapping {
 

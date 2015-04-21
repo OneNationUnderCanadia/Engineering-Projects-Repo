@@ -70,6 +70,8 @@ public class Compass {
 	
 	public static void NorthAndSouth(int[] numbs){
         int count = 0;
+        high = 0;
+        low = 10000;
 
         for(int i=0; i< 180; i++){
         	count = 0;

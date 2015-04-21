@@ -54,14 +54,28 @@ public class SqRoomExploration {
 	
 	public void exploreRoom() {
 		
-		for (int row = 0; row < room.length; row++){
+		for (int row = 0; row < room.length; row++) {
 	        // Sets boolean Arrays to default values
-	        for (int col = 0; col < room[row].length; col++){
+	        for (int col = 0; col < room[row].length; col++) {
 	        	
-	            wasHere[row][col] = true;
+	            wasHere[row][col] = false;
 	            
 	        }
 	        
+		}
+		
+		for (int row = 0; row < accessable.length; row++) {
+			
+			for (int col = 0; col < accessable[row].length; col++) {
+				
+				for (int height = 0; height < accessable[row][col].length; height ++) {
+					
+					accessable[row][col][height] = true;
+					
+				}
+				
+			}
+			
 		}
 		
 	    recursiveExplore(startX, startY);

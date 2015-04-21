@@ -2,7 +2,10 @@ package main;
 
 import search.BasicCleaner;
 import search.RoomMappingA;
+import search.SqRoomExploration;
+import search.SquareMapping;
 import lejos.nxt.Button;
+import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
 import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
@@ -45,8 +48,8 @@ public class StartUp {
 		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, lighter, norty);
 		
 		gui.execute("Calibration: 2");
-		//norty.calibrate();
-		norty.setCalibration(452, 0);
+		norty.calibrate();
+		//norty.setCalibration(452, 0);
 		System.out.println("what's the high?");
 			System.out.println(norty.getHigh());
 		System.out.println("what's the low?");

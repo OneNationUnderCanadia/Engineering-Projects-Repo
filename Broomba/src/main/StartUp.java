@@ -1,5 +1,6 @@
 package main;
 
+import search.BasicCleaner;
 import search.RoomMappingA;
 import search.SqRoomExploration;
 import search.SquareMapping;
@@ -24,26 +25,42 @@ public class StartUp {
 
 	public static void main(String[] args) {
 		
-		/** Brian do the thing
+		/**  Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
 		
-		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, new NXTRegulatedMotor(MotorPort.B), new NXTRegulatedMotor(MotorPort.C), true);
-		Magnets magnet = new Magnets();
-		Compass norty = new Compass(new LightSensor(SensorPort.S4), pilot);
+		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
+		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
+		
+		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
+		//Magnets magnet = new Magnets();
+		//LightSensor lighter= new LightSensor(SensorPort.S1, true);
+		//Compass norty = new Compass(lighter, pilot);
+		RoomMappingA rma = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
 		GUI gui = new GUI();
+		gui.setStrobeDelay(10);
 		Button.waitForAnyPress();
+		gui.setStrobeDelay(100);
+		/*
+		gui.execute("Calibration: 1");
+		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, lighter, norty);
 		
-		gui.execute("Calibration");
-		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, magnet);
-		
+		gui.execute("Calibration: 2");
+		norty.calibrate();
+			System.out.println(norty.getHigh());
+		System.out.println("want lows?");
+		Button.waitForAnyPress();
+			System.out.println(norty.getLow());
+		gui.setStrobeDelay(1000);
 		gui.execute("Exploring");
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		mapper.exploreRoom();
 		
-		gui.execute("All Done!");
+		gui.execute("All Done!");*/
+		BasicCleaner bc = new BasicCleaner(pilot, rma);
+		bc.cleanRoom(5);
 	}
 	
 	

@@ -64,6 +64,7 @@ public class SqRoomExploration {
 	        
 		}
 		
+		/*
 		for (int row = 0; row < accessable.length; row++) {
 			
 			for (int col = 0; col < accessable[row].length; col++) {
@@ -77,6 +78,7 @@ public class SqRoomExploration {
 			}
 			
 		}
+		*/
 		
 	    recursiveExplore(startX, startY);
 		

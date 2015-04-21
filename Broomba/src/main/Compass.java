@@ -1,5 +1,11 @@
 package main;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import lejos.nxt.BasicMotorPort;
 import lejos.nxt.LightSensor;
 import lejos.nxt.MotorPort;
@@ -24,7 +30,7 @@ public class Compass {
 	
 	public void goNorth(){
 			MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1); // turn light on
-			while(light.readNormalizedValue() > north){
+			while(light.readNormalizedValue() > high){
 				marvin.rotate(2);
 				Delay.msDelay(20);
 			}
@@ -57,6 +63,11 @@ public class Compass {
 		}
 		NorthAndSouth(data);
 	}
+	public void setCalibration(int highs, int lows){
+		high = highs;
+		low = lows;
+	}
+	
 	public static void NorthAndSouth(int[] numbs){
         int count = 0;
 

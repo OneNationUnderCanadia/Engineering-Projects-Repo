@@ -16,8 +16,6 @@ public class Compass {
 	LightSensor light;
 	GUI gui;
 	DifferentialPilot marvin;
-	static int high;
-	static int low;
 	int south;
 	int north;
 	
@@ -30,7 +28,7 @@ public class Compass {
 	
 	public void goNorth(){
 			MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1); // turn light on
-			while(light.readNormalizedValue() > high){
+			while(light.readNormalizedValue() > north){
 				marvin.rotate(2);
 				Delay.msDelay(20);
 			}
@@ -64,25 +62,25 @@ public class Compass {
 		NorthAndSouth(data);
 	}
 	public void setCalibration(int highs, int lows){
-		high = highs;
-		low = lows;
+		north = highs;
+		south = lows;
 	}
 	
-	public static void NorthAndSouth(int[] numbs){
+	public void NorthAndSouth(int[] numbs){
         int count = 0;
-        high = 0;
-        low = 10000;
+        north = 0;
+        south = 10000;
 
         for(int i=0; i< 180; i++){
         	count = 0;
 	        while(count < numbs.length)
 	        {
-	            if(numbs[count]< low) {
-	                low = numbs[count];
+	            if(numbs[count]< south) {
+	                south = numbs[count];
 	            }
 	
-	            if(numbs[count] > high) {
-	                high = numbs[count];      
+	            if(numbs[count] > north) {
+	                north = numbs[count];      
 	            }
 	
 	            count++;   
@@ -90,11 +88,11 @@ public class Compass {
 	        
         }
 	}
-	public int getHigh(){
-		return high;
+	public int getNorth(){
+		return north;
 	}
-	public int getLow(){
-		return low;
+	public int getSouth(){
+		return south;
 	}
 	public int getValue(){
 		return light.readNormalizedValue();

@@ -20,9 +20,8 @@ public class Compass {
 		
 	}
 	
-	public void goNorth(){
-			MotorPort.A.controlMotor(BasicMotorPort.MAX_POWER, 1); // turn light on
-			while(light.readNormalizedValue() > north){
+	public void goNorth(){ ////make this!@
+			while(light.readNormalizedValue() < north-10){
 				marvin.rotate(2);
 				Delay.msDelay(20);
 			}
@@ -30,10 +29,10 @@ public class Compass {
 	
 	public void calibrate(){
 		light.setFloodlight(true);
-		int[] data = new int[180];
+		int[] data = new int[220];
 
-		for(int i = 0; i< 180; i++){
-				Delay.msDelay(500);
+		for(int i = 0; i< 220; i++){
+				Delay.msDelay(100);
 				data[i] = light.getNormalizedLightValue();
 				System.out.println(data[i]);
 				marvin.rotate(2);

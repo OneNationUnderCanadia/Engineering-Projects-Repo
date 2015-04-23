@@ -28,6 +28,22 @@ public class SqRoomExploration {
 	public int width;
 	public int height;
 	
+	/** 
+	 * Allocates a SqRoomExploration object, and provides the necessary parameters for
+	 * this object to run properly<br>
+	 * 
+	 * @param pilot
+	 *          A DifferentialPilot object which will be used to drive the physical robot
+	 * @param sq
+	 *          A SquareMapping object that is used to have access to several of the methods
+	 *          within SquareMapping, including goNinty
+	 * @param w
+	 *          An integer that represents the width of the maximum potential room
+	 *          Measured in units of approximately two feet
+	 * @param h
+	 *          An integer that represents the length of the maximum potential room
+	 *          Measured in units of approximately two feet
+	 */
 	public SqRoomExploration(DifferentialPilot pilot, SquareMapping sq, int w, int h) {
 		
 		// The drivebase, so the robot can move
@@ -51,7 +67,9 @@ public class SqRoomExploration {
 		
 	}
 	
-	
+	/**
+	 * Prepares for and begins the recursiveExplore method
+	 */
 	public void exploreRoom() {
 		
 		for (int row = 0; row < room.length; row++) {
@@ -64,27 +82,20 @@ public class SqRoomExploration {
 	        
 		}
 		
-		/*
-		for (int row = 0; row < accessable.length; row++) {
-			
-			for (int col = 0; col < accessable[row].length; col++) {
-				
-				for (int height = 0; height < accessable[row][col].length; height ++) {
-					
-					accessable[row][col][height] = true;
-					
-				}
-				
-			}
-			
-		}
-		*/
-		
 	    recursiveExplore(startX, startY);
 		
 	}
 	
 	
+	/**
+	 * Recursive method, leads the robot around the room as though it were a grid
+	 * and cleans each square
+	 * 
+	 * @param x
+	 *          The x-value the robot is in the grid as it starts
+	 * @param y
+	 *          The y-value the robot is in the grid as it starts
+	 */
 	private boolean recursiveExplore(int x, int y) {
 		
 		double back = 0;
@@ -208,6 +219,9 @@ public class SqRoomExploration {
 	}
 	
 	
+	/**
+	 * Used as a shortcut within recursiveExplore to get the robot to the next box it needs to clean
+	 */
 	private void nextBox() {
 		
 		sqm.goNinty(1);

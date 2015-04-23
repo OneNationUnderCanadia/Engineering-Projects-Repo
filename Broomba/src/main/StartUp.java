@@ -48,9 +48,9 @@ public class StartUp {
 		norty.calibrate();
 		//norty.setCalibration(452, 0);
 		System.out.println("what's the high?");
-		System.out.println(norty.getHigh());
+		System.out.println(norty.getNorth());
 		System.out.println("what's the low?");
-		System.out.println(norty.getLow());
+		System.out.println(norty.getSouth());
 		Button.waitForAnyPress();
 		gui.setStrobeDelay(1000);
 		gui.execute("Exploring");
@@ -60,6 +60,7 @@ public class StartUp {
 		gui.execute("All Done!");
 		//BasicCleaner bc = new BasicCleaner(pilot, rma);
 		//bc.cleanRoom(50);
+		
 	}
 	
 	

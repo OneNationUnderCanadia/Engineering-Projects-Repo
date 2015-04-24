@@ -30,7 +30,7 @@ public class Compass {
 		int[] data = new int[220];
 
 		for(int i = 0; i< 220; i++){
-				Delay.msDelay(10);
+				Delay.msDelay(200);
 				data[i] = light.getNormalizedLightValue();
 				System.out.println(data[i]);
 				marvin.rotate(2);

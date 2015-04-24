@@ -10,21 +10,18 @@ import lejos.nxt.NXTRegulatedMotor;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 
-/** This is the  class StartUp
- *  Created by OneNationUnderCanadia
- *  To start the robot
+/** This is the  class StartUp<br>
+ *  Created by OneNationUnderCanadia<br>
+ *  Starts the robot<br><br>
  *  
  *  Created on Feb 16, 2015 at 8:48:15 AM
  */
-
 public class StartUp {
 	
-	// private static TetrixControllerFactory cf;
-	// private static TetrixMotorController mc;
 
 	public static void main(String[] args) {
 		
-		/**  Brian do the thing
+		/*  Brian do the thing
 		 *  Joey do the thing
 		 *  Jeff don't do the thing, you'd screw it up, learn to Java
 		 */
@@ -33,31 +30,29 @@ public class StartUp {
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		
 		DifferentialPilot pilot = new DifferentialPilot(8, 31.2, motorB, motorC, true);
-		//Magnets magnet = new Magnets();
+		
 		LightSensor lighter= new LightSensor(SensorPort.S1, true);
+		
 		Compass norty = new Compass(lighter, pilot);
+		
 		GUI gui = new GUI();
+		
 		gui.setStrobeDelay(10);
 		Button.waitForAnyPress();
 		gui.setStrobeDelay(100);
 		
 		gui.execute("Calibration: 1");
-		SquareMapping spinner = new SquareMapping(pilot, SensorPort.S3, SensorPort.S4, lighter, norty);
+		SquareMapping spinner = new SquareMapping(pilot, norty);
 		
 		gui.execute("Calibration: 2");
 		norty.calibrate();
-		//norty.setCalibration(452, 0);
-		System.out.println("what's the high?");
-		System.out.println(norty.getNorth());
-		System.out.println("what's the low?");
-		System.out.println(norty.getSouth());
-		Button.waitForAnyPress();
-		gui.setStrobeDelay(1000);
+		
 		gui.execute("Exploring");
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);
 		mapper.exploreRoom();
 		
 		gui.execute("All Done!");
+		// PANIC CODE
 		//BasicCleaner bc = new BasicCleaner(pilot, rma);
 		//bc.cleanRoom(50);
 		
@@ -71,5 +66,7 @@ public class StartUp {
 			System.out.println("Rotation Degree: " + angel);
 			rma.waitForBumperPress();
 		}
-	}	
+		
+	}
+	
 }

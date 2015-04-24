@@ -1,144 +1,148 @@
 package search;
 
-import lejos.nxt.ADSensorPort;
-import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.util.Delay;
 import main.Compass;
 
+/**
+ * SquareMapping class, contains many methods relating to moving the robot around the room, particularly goNinty and sweepinSquares
+ */
 public class SquareMapping {
 
-	// The drive is global
+	/**
+	 * DifferentialPilot object that allows this class to move the robot
+	 */
 	private DifferentialPilot marvin;
-	private RoomMappingA rma;
+	
+	/**
+	 * Compass object that allows the robot to detect magnetic north and south
+	 */
 	private Compass compass;
 	
+	/**
+	 * Keeps track of the direction the robot is facing<br>
+	 * 0 == north, 1 == east, 2 == south, 3 == west
+	 */
+	private int numTurned = 0;
 	
-	// Init
-	public SquareMapping(DifferentialPilot dp, ADSensorPort ts1, ADSensorPort ts2, LightSensor ls, Compass cps) {
+	
+	/**
+	 * Contains many methods to help the robot navigate and clean the room
+	 * 
+	 * @param dp
+	 *          A DifferentialPilot object that allows this class to move the robot
+	 * @param cps
+	 *          A Compass object that will allow this class to read the "compass sensor"
+	 */
+	public SquareMapping(DifferentialPilot dp, Compass cps) {
+		
 		marvin = dp;
-		rma = new RoomMappingA(marvin, ts1,ts2);
 		compass = cps;
 		
 	}
 	
 
-	
+	/**
+	 * Turns the robot approximately 90 degrees
+	 * 
+	 * @param i
+	 *          An integer value, set to 1 or -1<br>
+	 *          1 to make the robot turn right or -1 to make it turn left
+	 */
 	public void magicNinty(int i){
+		
 		marvin.stop();
-		if(i>0){
-			marvin.rotate(95.5);
-		}else{
-			marvin.rotate(-95.5);
-		}
+		
+		if (i > 0) marvin.rotate(95.5);
+		
+		else marvin.rotate(-95.5);
+		
 	}
 	
-	private int numTurned = 0;
-	public void goNinty(int i){ //0=north, 1=east, 2=south, 3west
-		if(i>0){
-			numTurned = (numTurned + 1) % 4;
-		/*	//marvin.rotate(95.5);
-			int value = light.readNormalizedValue();
-			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {
-				marvin.rotate(2);
-			}	*/
-		}else
-		{	
-			numTurned = (numTurned - 1) % 4;
+	
+	/**
+	 * Will turn the robot 90 degrees, correcting using the "compass sensor"
+	 * 
+	 * @param i
+	 *          An integer value, set to 1 or -1<br>
+	 *          1 to make the robot turn right or -1 to make it turn left
+	 */
+	public void goNinty(int i) {
+		
+		adjustDirection(i);
+		
+		if(numTurned == 0)
+			findingNorthPositive(turning(70), 110, 70);
+		
+		else if(numTurned == 1)
+			magicNinty(i);
+		
+		else if(numTurned == 2)
+			findingSouthPositive(turning(70), 110, 70);
+		
+		else if(numTurned == 3)
+			magicNinty(i);
+		
+	}
+	
+	
+	/**
+	 * Will adjust numTurned to match the situation
+	 * 
+	 * @param i
+	 *          An integer value, set to 1 or -1<br>
+	 *          1 to make the robot turn right or -1 to make it turn left 
+	 */
+	private void adjustDirection(int i) {
+		
+		if (i > 0){
 			
+			numTurned = (numTurned + 1) % 4;
+			
+		}
+		else {	
+			
+			numTurned = (numTurned - 1) % 4;
 			if (numTurned < 0) numTurned += 4;
 			
-			/*
-			//marvin.rotate(-95.5);
-			int value = light.getNormalizedLightValue();
-			while(!((compass.getHigh() > value) && (compass.getLow() < value))) {
-				marvin.rotate(2);
-			}*/
-		}
-		if(numTurned == 0){
-			
-			System.out.println("north");
-			Delay.msDelay(1000);
-			
-			findingNorthPositive(turning(70), 110, 70);
-			
-		}
-		else if(numTurned == 1){
-			
-			System.out.println("east");
-			Delay.msDelay(1000);
-			
-			marvin.rotate(95.5);
-			
-		}
-		else if(numTurned == 2){
-			
-			System.out.println("south");
-			Delay.msDelay(1000);
-			
-			findingSouthPositive(turning(70), 110, 70);
-			
-		}
-		else if(numTurned == 3){
-			
-			System.out.println("west");
-			Delay.msDelay(500);
-			
-			marvin.rotate(95.5);
-			
 		}
 		
 	}
 	
 	
+	/**
+	 * Initiates sweepinSquares with the proper values for our robot
+	 */
 	public void sweepinSquares(){
-		//float[] map = findPerimeter();
+		
 			spinSquares(200, 200);
-	}
-	
-
-	public float[] findPerimeter(){ //Finds Perimeter then resets to origin; map = [0]xmax, [1]ymax
-		
-		float map[] = new float[2];
-		
-		// Check if corner
-		for(int i = 0; i<2; i++){ //find up and left
-			marvin.forward();
-			rma.waitForBumperPress(); 
-			map[i] = marvin.getMovementIncrement();
-			goNinty(1); 
-			marvin.stop();
-		}
-		
-		marvin.travel(map[0]);
-		goNinty(1);
-		marvin.travel(map[1]);
-		return map;
-		
+			
 	}
 	
 	
-	public float[] findCenter(float[]  map){ //returns center[]; center[0] = x coord, center[1] = y coord
-		float[] center = new float[1];
-		
-		center[0] = map[0]/2;
-		center[1] = map[1]/2;
-
-		return center;
-	}
-	
-	
+	/**
+	 * Cleans a defined area
+	 * 
+	 * @param xbounds
+	 *          The width of the area
+	 * @param ybounds
+	 *          The length of the area
+	 */
 	public void spinSquares(int xbounds, int ybounds){
-		//int area = (int) (map[0] * map[1]); 
-		//rma.mapping(0, area);
-		int leftOrRight=-1;
+		
+		int leftOrRight = -1;
+		
 		for(int i = ybounds; i >= 0; i-=20){ // 20 = length of robot
-		    leftOrRight*=-1;
+			
+		    leftOrRight *= -1;
+		    
 			marvin.travel(xbounds); 						
 			goNinty(leftOrRight);
+			
 			marvin.travel(20);
 			goNinty(leftOrRight);
+			
 		}
+		
 	}
 	
 	

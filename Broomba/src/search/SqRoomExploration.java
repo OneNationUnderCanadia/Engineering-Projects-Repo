@@ -4,18 +4,19 @@ import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import search.SquareMapping;
 
-/** This is the class SqRoomExploration
- *  Created by OneNationUnderCanadia
- *  To explore a room
+/** This is the class SqRoomExploration<br>
+ *  Created by OneNationUnderCanadia<br>
+ *  Explores a room<br><br>
  *  
  *  Created on Mar 9, 2015 at 8:20:16 AM
  */
-
-
 public class SqRoomExploration {
 	
 	
 	// Global variables because I can
+	/**
+	 * 
+	 */
 	public DifferentialPilot marvin;
 	public SquareMapping sqm;
 	public RoomMappingA mapper;

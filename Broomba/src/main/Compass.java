@@ -1,8 +1,6 @@
 package main;
 
-import lejos.nxt.BasicMotorPort;
 import lejos.nxt.LightSensor;
-import lejos.nxt.MotorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 

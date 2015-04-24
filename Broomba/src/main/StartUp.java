@@ -46,6 +46,7 @@ public class StartUp {
 		
 		gui.execute("Calibration: 2");
 		norty.calibrate();
+		norty.goNorth();
 		
 		gui.execute("Exploring");
 		SqRoomExploration mapper = new SqRoomExploration(pilot, spinner, 30, 30);

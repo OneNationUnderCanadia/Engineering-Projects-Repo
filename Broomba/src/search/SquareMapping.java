@@ -60,6 +60,48 @@ public class SquareMapping {
 	
 	
 	/**
+	 * Turns the robot 90 degrees to north
+	 * 
+	 * @param i
+	 *          An integer value, set to 1 or -1<br>
+	 *          1 to make the robot turn right or -1 to make it turn left
+	 */
+	private void north(int i) {
+		
+		int high = 110;
+		int low = 70;
+		
+		if (i > 0)
+			findingNorthPositive(turning(low), high, low);
+		
+		else 
+			findingNorthNegative(turning(-low), -low, -high);
+		
+	}
+	
+	
+	/**
+	 * Turns the robot 90 degrees to south
+	 * 
+	 * @param i
+	 *          An integer value, set to 1 or -1<br>
+	 *          1 to make the robot turn right or -1 to make it turn left
+	 */
+	private void south(int i) {
+		
+		int high = 110;
+		int low = 70;
+		
+		if (i > 0) 
+			findingSouthPositive(turning(low), high, low);
+		
+		else
+			findingSouthNegative(turning(-low), -low, -high);
+		
+	}
+	
+	
+	/**
 	 * Will turn the robot 90 degrees, correcting using the "compass sensor"
 	 * 
 	 * @param i
@@ -71,13 +113,13 @@ public class SquareMapping {
 		adjustDirection(i);
 		
 		if(numTurned == 0)
-			findingNorthPositive(turning(70), 110, 70);
+			north(i);
 		
 		else if(numTurned == 1)
 			magicNinty(i);
 		
 		else if(numTurned == 2)
-			findingSouthPositive(turning(70), 110, 70);
+			south(i);
 		
 		else if(numTurned == 3)
 			magicNinty(i);

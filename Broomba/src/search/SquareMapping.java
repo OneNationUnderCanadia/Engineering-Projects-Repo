@@ -68,8 +68,8 @@ public class SquareMapping {
 	 */
 	private void north(int i) {
 		
-		int high = 110;
-		int low = 70;
+		int high = 120;
+		int low = 60;
 		
 		if (i > 0)
 			findingNorthPositive(turning(low), high, low);
@@ -89,8 +89,8 @@ public class SquareMapping {
 	 */
 	private void south(int i) {
 		
-		int high = 110;
-		int low = 70;
+		int high = 120;
+		int low = 60;
 		
 		if (i > 0) 
 			findingSouthPositive(turning(low), high, low);

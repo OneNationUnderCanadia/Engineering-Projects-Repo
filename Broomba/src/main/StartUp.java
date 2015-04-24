@@ -53,6 +53,7 @@ public class StartUp {
 		mapper.exploreRoom();
 		
 		gui.execute("All Done!");
+		
 		// PANIC CODE
 		//BasicCleaner bc = new BasicCleaner(pilot, rma);
 		//bc.cleanRoom(50);

@@ -15,19 +15,19 @@ public class SqRoomExploration {
 	
 	// Global variables because I can
 	/**
-	 * 
+	 * DifferentialPilot object that allows this class to manipulate the physical robot
 	 */
-	public DifferentialPilot marvin;
-	public SquareMapping sqm;
-	public RoomMappingA mapper;
+	private DifferentialPilot marvin;
+	private SquareMapping sqm;
+	private RoomMappingA mapper;
 	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
-	public int[][] room;
-	public boolean[][] wasHere;
+	private int[][] room;
+	private boolean[][] wasHere;
 	// Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
-	public boolean[][][] accessable;
-	public int startX, startY;
-	public int width;
-	public int height;
+	private boolean[][][] accessable;
+	private int startX, startY;
+	private int width;
+	private int height;
 	
 	/** 
 	 * Allocates a SqRoomExploration object, and provides the necessary parameters for
@@ -107,10 +107,10 @@ public class SqRoomExploration {
 		
 		wasHere[x][y] = true;
 		
-		/** clean square, use Joey's code */
+		// clean square, use Joey's code
 		sqm.spinSquares(53, 50);
 		
-		/** go left */
+		// go left
 		sqm.goNinty(1);
 		nextBox();
 		nextBox();
@@ -137,7 +137,7 @@ public class SqRoomExploration {
 			
 		}
 		
-		/** go up */
+		// go up
 		nextBox();
 		
 		// Try going up
@@ -160,7 +160,7 @@ public class SqRoomExploration {
 			
 		}
 		
-		/** go right */
+		// go right
 		nextBox();
 		nextBox();
 		sqm.goNinty(-1);
@@ -187,7 +187,7 @@ public class SqRoomExploration {
 			
 		}
 		
-		/** go down */
+		// go down
 		sqm.goNinty(1);
 		nextBox();
 		sqm.goNinty(-1);

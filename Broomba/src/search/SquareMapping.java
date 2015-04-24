@@ -52,9 +52,9 @@ public class SquareMapping {
 		
 		marvin.stop();
 		
-		if (i > 0) marvin.rotate(95.5);
+		if (i > 0) marvin.rotate(78);
 		
-		else marvin.rotate(-95.5);
+		else marvin.rotate(-78);
 		
 	}
 	

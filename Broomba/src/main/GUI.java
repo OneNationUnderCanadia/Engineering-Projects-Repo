@@ -57,7 +57,10 @@ public class GUI extends Thread{
 		System.out.println("XXXXXXXXXXXXXXXX");
 	}
 	
-	public int valueTest();
+	public int valueTest(){
+		return 0;
+		
+	};
     
 	public String step(String whichpart){
 		

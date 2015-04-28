@@ -1,11 +1,5 @@
 package search;
 
-/** This is the class RoomMappingA
- *  Created by OneNationUnderCanadia
- *  To have the methods to explore a room
- *  
- *  Created on Feb 20, 2015 at 8:40:26 AM
- */
 
 import lejos.util.Delay;
 import lejos.util.Stopwatch;
@@ -13,6 +7,14 @@ import lejos.nxt.ADSensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
+
+/** This is the class RoomMappingA
+ *  To have the methods to explore a room
+ *  
+ *  Created on Feb 20, 2015 at 8:40:26 AM
+ *  
+ *  @author OneNationUnderCanadia, Joey Spillers
+ */
 public class RoomMappingA {
 	
 	
@@ -83,9 +85,15 @@ public class RoomMappingA {
 		
 	}
 	
+	
+	/**
+	 * Waits for the bumper to be pressed
+	 * 
+	 * @author OneNationUnderCanadia
+	 */
 	public void waitForBumperPress() {
 		
-		while (!touch1.isPressed() && !touch2.isPressed()) {
+		while (!isBumperPressed()) {
 			
 			Delay.msDelay(20);
 			
@@ -94,12 +102,20 @@ public class RoomMappingA {
 	}
 	
 	
+	/**
+	 * Waits for either the bumper to be pressed OR a certain ammount of time to have passed
+	 * 
+	 * @param timeOut
+	 * 			The time, in milliseconds, that has to pass before the loop times out
+	 * 
+	 * @author OneNationUnderCanadia
+	 */
 	public void waitForBumperPress(int timeOut) {
 		
 		time.reset();
 		int elapsed = 0;
 		
-		while (!touch1.isPressed() && !touch2.isPressed() && elapsed < timeOut) {
+		while (!isBumperPressed() && elapsed < timeOut) {
 			
 			elapsed = time.elapsed();
 			Delay.msDelay(5);
@@ -109,13 +125,23 @@ public class RoomMappingA {
 	}
 	
 	
+	/**
+	 * Waits for the bumper to be pressed, a certain ammount of time to pass, or the robot to travel a certain distance
+	 * 
+	 * @param timeOut
+	 * 			The time, in milliseconds, before the robot times out
+	 * @param distance
+	 * 			The distance, in whatever units your DifferentialPilot uses, before the robot stops
+	 * 
+	 * @author OneNationUnderCanadia
+	 */
 	public double waitForBumperPress(int timeOut, double distance) {
 		
 		time.reset();
 		
 		marvin.forward();
 		
-		while(!touch1.isPressed() && !touch2.isPressed() && time.elapsed() < timeOut && marvin.getMovementIncrement() < distance) {
+		while(!isBumperPressed() && time.elapsed() < timeOut && marvin.getMovementIncrement() < distance) {
 			
 			Delay.msDelay(5);
 			
@@ -130,11 +156,14 @@ public class RoomMappingA {
 	}
 	
 	
+	/**
+	 * Checks and returns whether or not the bumper is pressed
+	 * 
+	 * @author OneNationUnderCanadia
+	 */
 	public boolean isBumperPressed() {
 		
-		if(touch1.isPressed() || touch2.isPressed()) return true;
-		
-		else return false;
+		return (touch1.isPressed() || touch2.isPressed());
 		
 	}
 	

@@ -1,27 +1,46 @@
 package search;
 
-/** This is the  class BasicCleaner
- *  Created by OneNationUnderCanadia
- *  To provide a backup to our current room cleaning solution, in case it doesn't work in time
- *  
- *  Created on Apr 20, 2015 at 12:15:08 AM
- */
 
 import lejos.robotics.navigation.DifferentialPilot;
 
 
-
+/** This is the  class BasicCleaner
+ *  To provide a backup to our current room cleaning solution, in case it doesn't work in time
+ *  
+ *  Created on Apr 20, 2015 at 12:15:08 AM
+ *  
+ *  @author OneNationUnderCanadia
+ */
 public class BasicCleaner {
 	
+	
+	/**
+	 * DifferentialPilot object that allows this class to manipulate the robot
+	 */
 	private DifferentialPilot marvin;
+	
+	
+	/**
+	 * RoomMappingA object that gives this class access to its methods
+	 */
 	private RoomMappingA mapper;
 	
+	
+	/**
+	 * Initiates the BasicCleaner class
+	 * 
+	 * @param pilot
+	 * 			DifferentialPilot object that allows this class to manipulate the robot
+	 * @param map
+	 * 			RoomMappingA object that gives this class access 
+	 */
 	public BasicCleaner(DifferentialPilot pilot, RoomMappingA map) {
 		
 		marvin = pilot;
 		mapper = map;
 		
 	}
+	
 	
 	public void cleanRoom(int number) {
 		

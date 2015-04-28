@@ -18,7 +18,12 @@ import search.RoomMappingA;
 public class StartUpE {
 
 	/**
+	 * Starts the emergency fallback code
+	 * 
 	 * @param args
+	 * 			Arguments, in case you want to start this from a text file
+	 * 
+	 * @author OneNationUnderCanadia
 	 */
 	public static void main(String[] args) {
 		

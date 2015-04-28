@@ -11,6 +11,13 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
     static int[] high = {0,0,0,0};
 	static MagneticSensor compass = new MagneticSensor(SensorPort.S2);
 	
+	
+	/** 
+	 * Calibrates using the useless Magnet Sensor<br>
+	 * 
+	 * @param pilot DifferentialPilot used
+	 * @author Joey Spillers
+	 */
 	public void calibrate(DifferentialPilot pilot){
 		/*I2CSensor magnet = new I2CSensor(SensorPort.S1);
 		byte[] buf = null;
@@ -30,6 +37,13 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 		}
 		highAndLow(data);
 	}
+	
+	/** 
+	 * Searches Numbs and sets the lowest and highest value in each second-level array<br>
+	 * 
+	 * @param numbs To be used with the Calibration method only; Contains a ton of values
+	 * @author Joey Spillers
+	 */
 	public static void highAndLow(int[][] numbs){
         int count = 0;
 
@@ -50,12 +64,27 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	        
         }
 	}
+	/** 
+	 * returns the North Value of the Magnet Sensor<br>
+	 * @author Joey Spillers
+	 */
 	public int[] getHigh(){
 		return high;
 	}
+	
+	/** 
+	 * returns the South Value of the Magnet Sensor<br>
+	 * @author Joey Spillers
+	 */
 	public int[] getLow(){
 		return low;
 	}
+	
+	
+	/** 
+	 * returns the Current Value of the Magnet Sensor<br>
+	 * @author Joey Spillers
+	 */
 	public int getValue(){
 		return compass.readValue();
 	}

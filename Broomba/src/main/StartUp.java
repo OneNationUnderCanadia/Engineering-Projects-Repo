@@ -60,15 +60,4 @@ public class StartUp {
 		
 	}
 	
-	
-	public void angleTesting(int Range, DifferentialPilot pilot){
-		RoomMappingA rma = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
-		for(int angel = Range; Range<200; Range+= 5){
-			pilot.rotate(angel);
-			System.out.println("Rotation Degree: " + angel);
-			rma.waitForBumperPress();
-		}
-		
-	}
-	
 }

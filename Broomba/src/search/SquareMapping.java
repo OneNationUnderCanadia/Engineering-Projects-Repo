@@ -10,6 +10,8 @@ public class SquareMapping {
 
 	/**
 	 * DifferentialPilot object that allows this class to move the robot
+	 * 
+	 * @author Joey Spillers, OneNationUnderCanadia
 	 */
 	private DifferentialPilot marvin;
 	
@@ -21,6 +23,7 @@ public class SquareMapping {
 	/**
 	 * Keeps track of the direction the robot is facing<br>
 	 * 0 == north, 1 == east, 2 == south, 3 == west
+	 * @author Joey Spillers, OneNationUnderCanadia
 	 */
 	private int numTurned = 0;
 	
@@ -32,6 +35,7 @@ public class SquareMapping {
 	 *          A DifferentialPilot object that allows this class to move the robot
 	 * @param cps
 	 *          A Compass object that will allow this class to read the "compass sensor"
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public SquareMapping(DifferentialPilot dp, Compass cps) {
 		
@@ -47,6 +51,7 @@ public class SquareMapping {
 	 * @param i
 	 *          An integer value, set to 1 or -1<br>
 	 *          1 to make the robot turn right or -1 to make it turn left
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void magicNinty(int i){
 		
@@ -65,6 +70,7 @@ public class SquareMapping {
 	 * @param i
 	 *          An integer value, set to 1 or -1<br>
 	 *          1 to make the robot turn right or -1 to make it turn left
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	private void north(int i) {
 		
@@ -86,6 +92,7 @@ public class SquareMapping {
 	 * @param i
 	 *          An integer value, set to 1 or -1<br>
 	 *          1 to make the robot turn right or -1 to make it turn left
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	private void south(int i) {
 		
@@ -107,6 +114,7 @@ public class SquareMapping {
 	 * @param i
 	 *          An integer value, set to 1 or -1<br>
 	 *          1 to make the robot turn right or -1 to make it turn left
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void goNinty(int i) {
 		
@@ -133,6 +141,7 @@ public class SquareMapping {
 	 * @param i
 	 *          An integer value, set to 1 or -1<br>
 	 *          1 to make the robot turn right or -1 to make it turn left 
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	private void adjustDirection(int i) {
 		
@@ -153,6 +162,8 @@ public class SquareMapping {
 	
 	/**
 	 * Initiates sweepinSquares with the proper values for our robot
+	 * 
+	 * @author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void sweepinSquares(){
 		
@@ -168,6 +179,8 @@ public class SquareMapping {
 	 *          The width of the area
 	 * @param ybounds
 	 *          The length of the area
+	 *          
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void spinSquares(int xbounds, int ybounds){
 		
@@ -198,6 +211,7 @@ public class SquareMapping {
 	 *          The upper boundry on where you think north might possibly be
 	 * @param limitDown
 	 *          The lower boundry on where you think north might possibly be
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void findingNorthPositive(int degreesTurned, int limitUp, int limitDown) {
 		
@@ -225,6 +239,7 @@ public class SquareMapping {
 	 *          The upper boundry on where you think north might possibly be
 	 * @param limitDown
 	 *          The lower boundry on where you think north might possibly be
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void findingNorthNegative(int degreesTurned, int limitUp, int limitDown) {
 		
@@ -251,6 +266,7 @@ public class SquareMapping {
 	 *          The upper boundry on where you think south might possibly be
 	 * @param limitDown
 	 *          The lower boundry on where you think south might possibly be
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void findingSouthPositive(int degreesTurned, int limitUp, int limitDown) {
 		
@@ -278,6 +294,7 @@ public class SquareMapping {
 	 *          The upper boundry on where you think north might possibly be
 	 * @param limitDown
 	 *          The lower boundry on where you think north might possibly be
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public void findingSouthNegative(int degreesTurned, int limitUp, int limitDown) {
 		
@@ -303,6 +320,8 @@ public class SquareMapping {
 	 *          This close to north or closer causes the function to reurn
 	 *          positive.  Set lower to avoid false positives, set higher
 	 *          to avoid not noticing north.
+	 *          
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public boolean northWithinX(int limit) {
 		
@@ -319,6 +338,7 @@ public class SquareMapping {
 	 *          This close to south or closer causes the function to reurn
 	 *          positive.  Set lower to avoid false positives, set higher
 	 *          to avoid not noticing south.
+	 * @author Joey Spillers, OneNationUnderCanadia
 	 */
 	public boolean southWithinX(int limit) {
 		
@@ -332,6 +352,7 @@ public class SquareMapping {
 	 * 
 	 * @param turn
 	 *          The number of degrees you would like the robot to turn
+	 *@author Joey Spillers, OneNationUnderCanadia
 	 */
 	public int turning(int turn) {
 		

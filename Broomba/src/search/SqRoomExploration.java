@@ -1,33 +1,76 @@
 package search;
 
+
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import search.SquareMapping;
 
+
 /** This is the class SqRoomExploration<br>
- *  Created by OneNationUnderCanadia<br>
  *  Explores a room<br><br>
  *  
  *  Created on Mar 9, 2015 at 8:20:16 AM
+ *  
+ *  @author OneNationUnderCanadia
  */
 public class SqRoomExploration {
 	
 	
-	// Global variables because I can
 	/**
 	 * DifferentialPilot object that allows this class to manipulate the physical robot
 	 */
 	private DifferentialPilot marvin;
+	
+	
+	/**
+	 * SquareMapping object that gives access to its methods
+	 */
 	private SquareMapping sqm;
+	
+	
+	/**
+	 * RoomMappingA object that gives access to its methods
+	 */
 	private RoomMappingA mapper;
-	// within room, 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
+	
+	
+	/**
+	 * Two-dimentional array that contains the information about the room
+	 * 0 means unexplored, 1 means cleaned, 2 means inaccessable (or wall), and 3 means partially open
+	 */
 	private int[][] room;
+	
+	
+	/**
+	 * Two-dimentional array that has whether or not the robot has been to any particular square
+	 */
 	private boolean[][] wasHere;
-	// Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
+	
+	
+	/**
+	 * Three-dimentional array that has information about where any particular square can be accessed from
+	 * Within the third dimension of accessable, 0 = right, 1 = left, 2 = top, 3 = bottom
+	 */
 	private boolean[][][] accessable;
+	
+	
+	/**
+	 * Integers for where the robot starts in the room
+	 */
 	private int startX, startY;
+	
+	
+	/**
+	 * Integer for the width of the room
+	 */
 	private int width;
+	
+	
+	/**
+	 * Integer for the height of the room
+	 */
 	private int height;
+	
 	
 	/** 
 	 * Allocates a SqRoomExploration object, and provides the necessary parameters for
@@ -44,6 +87,8 @@ public class SqRoomExploration {
 	 * @param h
 	 *          An integer that represents the length of the maximum potential room
 	 *          Measured in units of approximately two feet
+	 *          
+	 * @author OneNationUnderCanadia
 	 */
 	public SqRoomExploration(DifferentialPilot pilot, SquareMapping sq, int w, int h) {
 		
@@ -67,6 +112,7 @@ public class SqRoomExploration {
 		mapper = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
 	}
+	
 	
 	/**
 	 * Prepares for and begins the recursiveExplore method
@@ -96,6 +142,8 @@ public class SqRoomExploration {
 	 *          The x-value the robot is in the grid as it starts
 	 * @param y
 	 *          The y-value the robot is in the grid as it starts
+	 *          
+	 * @author OneNationUnderCanadia
 	 */
 	private boolean recursiveExplore(int x, int y) {
 		
@@ -222,6 +270,8 @@ public class SqRoomExploration {
 	
 	/**
 	 * Used as a shortcut within recursiveExplore to get the robot to the next box it needs to clean
+	 * 
+	 * @author OneNationUnderCanadia
 	 */
 	private void nextBox() {
 		

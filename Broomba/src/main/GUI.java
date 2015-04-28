@@ -36,6 +36,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param s
 	 *          Arbitrary; used to differentiate from main constructor
+	 * @author Joey Spillers
 	 */
 	public GUI(String s){
 		//I don't want it
@@ -48,6 +49,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param whatcalled
 	 *          String to be displayed below executing; should be < 14.
+	 * @author Joey Spillers
 	 */
 	public void execute(String whatcalled){
 		LCD.clear();
@@ -68,6 +70,7 @@ public class GUI extends Thread{
 	 * @param value
 	 *          the value to be printed as part of calibrating the magnet sensor; 
 	 *          should be a 3 digit integer
+	 * @author Joey Spillers
 	 */
 	public void valuePrint(int value){
 		LCD.clear();
@@ -87,6 +90,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param whichpart
 	 *          String to be given padding
+	 * @author Joey Spillers
 	 */ 
 	public String step(String whichpart){
 		
@@ -117,6 +121,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param i
 	 *          the interval for which the strobe light flickers; Miliseconds
+	 * @author Joey Spillers
 	 */
 	public void setStrobeDelay(int i){
 		delay = i;
@@ -124,7 +129,7 @@ public class GUI extends Thread{
 	
 	/** 
 	 * Starts the secondary thread; begins the strobe light<br>
-	 * 
+	 * @author Joey Spillers
 	 */
 	public void run(){
 		for(int i=0; i<5000; i++){

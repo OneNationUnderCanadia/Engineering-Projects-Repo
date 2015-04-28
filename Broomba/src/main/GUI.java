@@ -12,6 +12,10 @@ public class GUI extends Thread{
 	Sound sd;
 	private int delay = 100;
 	
+	/** 
+	 * Allocates a GUI object<br>
+	 * 
+	 */
 	public GUI(){
 		Sound.setVolume(50);
 		
@@ -27,12 +31,24 @@ public class GUI extends Thread{
 		Delay.msDelay(500);
 	}
 	
+	/** 
+	 * Allocates a GUI object, and doesn't have a start splash<br>
+	 * 
+	 * @param s
+	 *          Arbitrary; used to differentiate from main constructor
+	 */
 	public GUI(String s){
 		//I don't want it
 		this.start();
 		LCD.clear();
 	}
 	
+	/** 
+	 * Prints a pretty 'executing' screen, with whatcalled below it<br>
+	 * 
+	 * @param whatcalled
+	 *          String to be displayed below executing; should be < 14.
+	 */
 	public void execute(String whatcalled){
 		LCD.clear();
 		//Sound.beep();
@@ -45,6 +61,14 @@ public class GUI extends Thread{
 		System.out.println("XXXXXXXXXXXXXXXX");
 		Delay.msDelay(500);
 	}
+	
+	/** 
+	 * For use in magnet test; prints magnet test value<br>
+	 * 
+	 * @param value
+	 *          the value to be printed as part of calibrating the magnet sensor; 
+	 *          should be a 3 digit integer
+	 */
 	public void valuePrint(int value){
 		LCD.clear();
 		//Sound.beep();
@@ -57,11 +81,13 @@ public class GUI extends Thread{
 		System.out.println("XXXXXXXXXXXXXXXX");
 	}
 	
-	public int valueTest(){
-		return 0;
-		
-	};
-    
+
+	/** 
+	 * Used to center whatever string within the X's for any GUI; Only used internally<br>
+	 * 
+	 * @param whichpart
+	 *          String to be given padding
+	 */ 
 	public String step(String whichpart){
 		
 		int inbetween = 0;
@@ -86,9 +112,20 @@ public class GUI extends Thread{
 		
 	}
 	
+	/** 
+	 * Sets the interval for which the strobe light flickers<br>
+	 * 
+	 * @param i
+	 *          the interval for which the strobe light flickers; Miliseconds
+	 */
 	public void setStrobeDelay(int i){
 		delay = i;
 	}
+	
+	/** 
+	 * Starts the secondary thread; begins the strobe light<br>
+	 * 
+	 */
 	public void run(){
 		for(int i=0; i<5000; i++){
 			if(true){

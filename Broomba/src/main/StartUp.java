@@ -57,7 +57,6 @@ public class StartUp {
 		// PANIC CODE
 		//BasicCleaner bc = new BasicCleaner(pilot, rma);
 		//bc.cleanRoom(50);
-		
 	}
 	
 }

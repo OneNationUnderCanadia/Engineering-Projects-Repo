@@ -11,14 +11,18 @@ import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 
 /** This is the  class StartUp<br>
- *  Created by OneNationUnderCanadia<br>
  *  Starts the robot<br><br>
  *  
  *  Created on Feb 16, 2015 at 8:48:15 AM
+ *  
+ *  @author OneNationUnderCanadia, Joey Spillers
  */
 public class StartUp {
 	
-
+	
+	/**
+	 * Runs the code, making the robot clean a room
+	 */
 	public static void main(String[] args) {
 		
 		/*  Brian do the thing
@@ -54,9 +58,6 @@ public class StartUp {
 		
 		gui.execute("All Done!");
 		
-		// PANIC CODE
-		//BasicCleaner bc = new BasicCleaner(pilot, rma);
-		//bc.cleanRoom(50);
 	}
 	
 }

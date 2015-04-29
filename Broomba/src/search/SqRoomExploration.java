@@ -116,6 +116,8 @@ public class SqRoomExploration {
 	
 	/**
 	 * Prepares for and begins the recursiveExplore method
+	 * 
+	 * @author OneNationUnderCanadia
 	 */
 	public void exploreRoom() {
 		

@@ -1,12 +1,10 @@
 package search;
 
-
 import lejos.util.Delay;
 import lejos.util.Stopwatch;
 import lejos.nxt.ADSensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
-
 
 /** This is the class RoomMappingA
  *  To have the methods to explore a room

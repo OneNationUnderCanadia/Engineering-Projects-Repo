@@ -6,12 +6,13 @@ import lejos.nxt.ADSensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
-/** This is the class RoomMappingA
- *  To have the methods to explore a room
+/** 
+ * This is the class RoomMappingA
+ * To have the methods to explore a room
  *  
- *  Created on Feb 20, 2015 at 8:40:26 AM
+ * Created on Feb 20, 2015 at 8:40:26 AM
  *  
- *  @author OneNationUnderCanadia, Joey Spillers
+ * @author OneNationUnderCanadia, Joey Spillers
  */
 public class RoomMappingA {
 	
@@ -91,8 +92,10 @@ public class RoomMappingA {
 	 */
 	public void waitForBumperPress() {
 		
+		// Loops for as long as the bumper is not pressed
 		while (!isBumperPressed()) {
 			
+			// Slight time delay before checking again
 			Delay.msDelay(20);
 			
 		}
@@ -110,12 +113,13 @@ public class RoomMappingA {
 	 */
 	public void waitForBumperPress(int timeOut) {
 		
+		// Resets the timer
 		time.reset();
-		int elapsed = 0;
 		
-		while (!isBumperPressed() && elapsed < timeOut) {
+		// Loops while the time has not reached timeOut and the bumper has not been hit
+		while (!isBumperPressed() && time.elapsed() < timeOut) {
 			
-			elapsed = time.elapsed();
+			// Slight time delay before checking again
 			Delay.msDelay(5);
 			
 		}
@@ -135,21 +139,25 @@ public class RoomMappingA {
 	 */
 	public double waitForBumperPress(int timeOut, double distance) {
 		
+		// Resets the timer
 		time.reset();
 		
+		// Starts the robot forward
 		marvin.forward();
 		
+		// Loops while the bumper has not been hit, the robot has not timed out, and the set distance has not been reached
 		while(!isBumperPressed() && time.elapsed() < timeOut && marvin.getMovementIncrement() < distance) {
 			
+			// Slight time delay before checking again
 			Delay.msDelay(5);
 			
 		}
 		
+		// Stops the robot
 		marvin.stop();
 		
-		if(distance > marvin.getMovementIncrement()) return marvin.getMovementIncrement();
-		
-		else return 0;
+		// Return the distance the robot has traveled
+		return marvin.getMovementIncrement();
 		
 	}
 	
@@ -161,6 +169,7 @@ public class RoomMappingA {
 	 */
 	public boolean isBumperPressed() {
 		
+		// Returns whether or not the bumper is pressed
 		return (touch1.isPressed() || touch2.isPressed());
 		
 	}

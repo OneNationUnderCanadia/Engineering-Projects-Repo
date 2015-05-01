@@ -38,6 +38,7 @@ public class BasicCleaner {
 	 */
 	public BasicCleaner(DifferentialPilot pilot, RoomMappingA map) {
 		
+		// Instantiates the global variables, marvin and mapper
 		marvin = pilot;
 		mapper = map;
 		
@@ -54,8 +55,11 @@ public class BasicCleaner {
 	 */
 	public void cleanRoom(int number) {
 		
+		// Loops for *number times
 		for(int i = 0; i < number; i++) {
 			
+			// Cleans in the manner of a BogoSort
+			// Goes forward until it hits something, goes slightly back, stops, and turns to a random angle
 			marvin.forward();
 			mapper.waitForBumperPress();
 			marvin.travel(-10);

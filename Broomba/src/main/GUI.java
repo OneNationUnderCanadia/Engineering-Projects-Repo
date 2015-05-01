@@ -6,6 +6,11 @@ import lejos.nxt.MotorPort;
 import lejos.nxt.Sound;
 import lejos.util.Delay;
 
+/**
+ * GUI object
+ * 
+ * @author Joey Spillers
+ */
 public class GUI extends Thread{
 	
 	//LightSensor light = new LightSensor(SensorPort.S1, false);
@@ -36,6 +41,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param s
 	 *          Arbitrary; used to differentiate from main constructor
+	 *          
 	 * @author Joey Spillers
 	 */
 	public GUI(String s){
@@ -49,6 +55,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param whatcalled
 	 *          String to be displayed below executing; should be < 14.
+	 *          
 	 * @author Joey Spillers
 	 */
 	public void execute(String whatcalled){
@@ -70,6 +77,7 @@ public class GUI extends Thread{
 	 * @param value
 	 *          the value to be printed as part of calibrating the magnet sensor; 
 	 *          should be a 3 digit integer
+	 *          
 	 * @author Joey Spillers
 	 */
 	public void valuePrint(int value){
@@ -90,6 +98,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param whichpart
 	 *          String to be given padding
+	 *          
 	 * @author Joey Spillers
 	 */ 
 	public String step(String whichpart){
@@ -121,6 +130,7 @@ public class GUI extends Thread{
 	 * 
 	 * @param i
 	 *          the interval for which the strobe light flickers; Miliseconds
+	 *          
 	 * @author Joey Spillers
 	 */
 	public void setStrobeDelay(int i){
@@ -129,6 +139,7 @@ public class GUI extends Thread{
 	
 	/** 
 	 * Starts the secondary thread; begins the strobe light<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public void run(){

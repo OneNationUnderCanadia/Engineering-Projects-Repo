@@ -27,14 +27,18 @@ public class StartUpE {
 	 */
 	public static void main(String[] args) {
 		
+		// Creates motors and pilot, so the robot can move
 		NXTRegulatedMotor motorB = new NXTRegulatedMotor(MotorPort.B);
 		NXTRegulatedMotor motorC = new NXTRegulatedMotor(MotorPort.C);
 		DifferentialPilot marvin = new DifferentialPilot(8, 31.2, motorB, motorC, true);
 		
+		// Creates mapper, giving access to its methods and allowing the creation of a BasicCleaner
 		RoomMappingA mapper = new RoomMappingA(marvin, SensorPort.S3, SensorPort.S4);
 		
+		// Creates cleaner, allowing use of the BasicCleaner methods
 		BasicCleaner cleaner = new BasicCleaner(marvin, mapper);
 		
+		// Cleans the room
 		cleaner.cleanRoom(1000);
 
 	}

@@ -4,7 +4,13 @@ import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 
+/**
+ * Compass object
+ * 
+ * @author Joey Spillers
+ */
 public class Compass {
+	
 	LightSensor light;
 	GUI gui;
 	DifferentialPilot marvin;
@@ -18,6 +24,7 @@ public class Compass {
 	 *          The LightSensor to be used with the compass.
 	 * @param mad
 	 * 			The DifferentialPilot to be used;
+	 * 
 	 * @author Joey Spillers
 	 */
 	public Compass(LightSensor l1, DifferentialPilot mad){
@@ -29,6 +36,7 @@ public class Compass {
 	
 	/** 
 	 * Makes the robot face north<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public void goNorth(){ ////make this!@
@@ -40,6 +48,7 @@ public class Compass {
 	
 	/** 
 	 * Calibrates the Compass Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public void calibrate(){
@@ -62,6 +71,7 @@ public class Compass {
 	 *          North Value
 	 * @param lows
 	 * 			South Value
+	 * 
 	 * @author Joey Spillers
 	 */	
 	public void setCalibration(int highs, int lows){
@@ -74,6 +84,7 @@ public class Compass {
 	 * 
 	 * @param numbs
 	 *          Should be sent from the calibration method only!
+	 *          
 	 * @author Joey Spillers
 	 */
 	public void NorthAndSouth(int[] numbs){
@@ -100,6 +111,7 @@ public class Compass {
 	}
 	/** 
 	 * returns the North Value of the Light Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int getNorth(){
@@ -108,6 +120,7 @@ public class Compass {
 	
 	/** 
 	 * returns the South Value of the Light Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int getSouth(){
@@ -116,6 +129,7 @@ public class Compass {
 	
 	/** 
 	 * returns the Current Value of the Light Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int getValue(){

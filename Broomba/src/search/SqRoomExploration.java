@@ -109,6 +109,7 @@ public class SqRoomExploration {
 		startX = w/2;
 		startY = h/2;
 		
+		// Instantiates the RoomMappingA object
 		mapper = new RoomMappingA(pilot, SensorPort.S3, SensorPort.S4);
 		
 	}
@@ -121,16 +122,20 @@ public class SqRoomExploration {
 	 */
 	public void exploreRoom() {
 		
+		// For each row
 		for (int row = 0; row < room.length; row++) {
-	        // Sets boolean Arrays to default values
+			
+	        // For each collomn
 	        for (int col = 0; col < room[row].length; col++) {
 	        	
+	        	// Sets to proper default: false
 	            wasHere[row][col] = false;
 	            
 	        }
 	        
 		}
 		
+		// Cleans the room
 	    recursiveExplore(startX, startY);
 		
 	}
@@ -149,37 +154,51 @@ public class SqRoomExploration {
 	 */
 	private boolean recursiveExplore(int x, int y) {
 		
+		// A double value, representing how far the robot has traveled within a particular line
 		double back = 0;
 		
+		// Changes value in room
 		if(room[x][y] == 0) room[x][y] = 1;
 		
+		// Stops method if robot has already been here
 		if(wasHere[x][y]) return false;
 		
+		// Sets wasHere to true
 		wasHere[x][y] = true;
 		
 		// clean square, use Joey's code
 		sqm.spinSquares(53, 50);
 		
-		// go left
+		// Move so the robot can go left
 		sqm.goNinty(1);
 		nextBox();
 		nextBox();
 		
-		// Try going left
+		// Try going left, if it is accessable
 		if(x != 0 && accessable[x-1][y][0]) {
 			
+			// Tries to go into the next square left
 			back = mapper.waitForBumperPress(30000, 60);
 			
+			// If the bumper is not pressed
 			if(!mapper.isBumperPressed()) {
 				
+				// Turn to the proper direction
 				sqm.goNinty(1);
+				
+				// Cleans the room, starting with this square
 				recursiveExplore(x-1, y);
+				
+				// Turns back
 				sqm.goNinty(-1);
+				
+				// Returns
 				marvin.travel(back * -1);
 				
 			}
 			else {
 				
+				// Sets accessable to false at this value, returns
 				accessable[x-1][y][0] = false;
 				marvin.travel(back * -1);
 				
@@ -187,22 +206,28 @@ public class SqRoomExploration {
 			
 		}
 		
-		// go up
+		// Move so the robot can go up
 		nextBox();
 		
-		// Try going up
+		// Try going up, if it's accessable
 		if(y != height - 1 && accessable[x][y+1][3]) {
 			
+			// Tries to go into the next square up
 			back = mapper.waitForBumperPress(30000, 10);
 			
+			// If the bumper is not pressed
 			if(!mapper.isBumperPressed()) {
 				
+				// Cleans from this square
 				recursiveExplore(x, y+1);
+				
+				// Returns
 				marvin.travel(back * -1);
 				
 			}
 			else {
 				
+				// Sets accessable to false, then returns
 				accessable[x][y+1][3] = false;
 				marvin.travel(back * -1);
 				
@@ -210,26 +235,36 @@ public class SqRoomExploration {
 			
 		}
 		
-		// go right
+		// Move so the robot can go right
 		nextBox();
 		nextBox();
 		sqm.goNinty(-1);
 		
-		// Try going right
+		// Try going right, if it is accessable
 		if(x != width - 1 && accessable[x+1][y][1]) {
 			
+			// Tries to go into the next square right
 			back = mapper.waitForBumperPress(30000, 10);
 			
+			// If the bumper is not pressed:
 			if(!mapper.isBumperPressed()) {
 				
+				// Turns properly
 				sqm.goNinty(-1);
+				
+				// Cleans from this square
 				recursiveExplore(x+1, y);
+				
+				// Turns back
 				sqm.goNinty(1);
+				
+				// Returns
 				marvin.travel(back * -1);
 				
 			}
 			else {
 				
+				// Sets accessable to false and returns
 				accessable[x+1][y][1] = false;
 				marvin.travel(back * -1);
 				
@@ -237,7 +272,7 @@ public class SqRoomExploration {
 			
 		}
 		
-		// go down
+		// Move so the robot can go down
 		sqm.goNinty(1);
 		nextBox();
 		sqm.goNinty(-1);
@@ -245,19 +280,30 @@ public class SqRoomExploration {
 		// Try going down
 		if(y != 0 && accessable[x][y-1][2]) {
 			
+			// Tries to move into the next square down
 			back = mapper.waitForBumperPress(30000, 60);
 			
+			// If the bumper is pressed:
 			if(!mapper.isBumperPressed()) {
 				
+				// Turns to face the proper direction
 				sqm.goNinty(1);
 				sqm.goNinty(1);
+				
+				// Explores from this square
 				recursiveExplore(x, y-1);
+				
+				// Turns back
 				sqm.goNinty(-1);
 				sqm.goNinty(-1);
+				
+				// Returns
+				marvin.travel(back * -1);
 				
 			}
 			else {
 				
+				// Sets accessable to false and returns
 				accessable[x][y-1][2] = false;
 				marvin.travel(back * -1);
 				
@@ -265,6 +311,7 @@ public class SqRoomExploration {
 			
 		}
 		
+		// return something (to make the program happy)
 		return false;
 		
 	}
@@ -277,6 +324,7 @@ public class SqRoomExploration {
 	 */
 	private void nextBox() {
 		
+		// Turns, then travels the length of the side of a box
 		sqm.goNinty(1);
 		marvin.travel(50);
 		

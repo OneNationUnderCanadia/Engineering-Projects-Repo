@@ -5,6 +5,11 @@ import lejos.nxt.addon.MagneticSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 
+/**
+ * Abstraction for Magnets
+ * 
+ * @author Joey Spillers
+ */
 public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	
     static int[] low = {10000,10000,10000,10000};
@@ -15,7 +20,9 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	/** 
 	 * Calibrates using the useless Magnet Sensor<br>
 	 * 
-	 * @param pilot DifferentialPilot used
+	 * @param pilot
+	 * 			DifferentialPilot used
+	 * 
 	 * @author Joey Spillers
 	 */
 	public void calibrate(DifferentialPilot pilot){
@@ -41,7 +48,9 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	/** 
 	 * Searches Numbs and sets the lowest and highest value in each second-level array<br>
 	 * 
-	 * @param numbs To be used with the Calibration method only; Contains a ton of values
+	 * @param numbs
+	 * 			To be used with the Calibration method only; Contains a ton of values
+	 * 
 	 * @author Joey Spillers
 	 */
 	public static void highAndLow(int[][] numbs){
@@ -66,6 +75,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	}
 	/** 
 	 * returns the North Value of the Magnet Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int[] getHigh(){
@@ -74,6 +84,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	
 	/** 
 	 * returns the South Value of the Magnet Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int[] getLow(){
@@ -83,6 +94,7 @@ public class Magnets { ///[0] Forward, [1] Right, [2] Back, [3] Left
 	
 	/** 
 	 * returns the Current Value of the Magnet Sensor<br>
+	 * 
 	 * @author Joey Spillers
 	 */
 	public int getValue(){

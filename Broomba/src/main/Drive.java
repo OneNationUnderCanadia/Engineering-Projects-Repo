@@ -1,10 +1,5 @@
 package main;
 
-/** Created by OneNationUnderCanadia
- *  On Jan 28, 2015 at 9:18:01 AM
- *  To make the robot drive with better control
- */
-
 import lejos.nxt.I2CPort;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.addon.tetrix.TetrixControllerFactory;
@@ -13,6 +8,16 @@ import lejos.nxt.addon.tetrix.TetrixMotorController;
 import lejos.util.Delay;
 
 
+/**
+ * Makes the robot drive with better control<br>
+ * Depreciated, please do not use this class, it is outdated and useless<br><br>
+ * 
+ * Created on Jan 28, 2015 at 9:18:01 AM
+ * 
+ * @author OneNationUnderCanadia
+ * 
+ * @deprecated
+ */
 public class Drive {
 	
 	
